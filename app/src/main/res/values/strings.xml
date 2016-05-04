@@ -1,0 +1,71 @@
+<resources>
+    <string name="app_name">DSS for Students</string>
+    <string name="app_label">СППР</string>
+
+    <string name="next">Далее</string>
+
+    <!-- AKDSSLearningModeActivity strings -->
+
+    <!-- AKDSSLearningModeStepsFragment strings -->
+    <string name="firstStepName">Пример постановки задачи</string>
+    <string name="secondStepName">Выявление ЗС, первичное ранжирование</string>
+    <string name="thirdStepName">Определение ключевых ЗС</string>
+    <string name="fourthStepName">Выделение и ранжирование потребностей ЗС</string>
+    <string name="fifthStepName">Оценка ключевых показателей</string>
+    <string name="sixthStepName">Расчет локальной и глобальной ценности</string>
+
+    <!-- AKDSSOverViewFragment strings -->
+    <string name="overviewText">
+        <![CDATA[
+        <b>Основная задача</b> – выбрать решение, которое позволит в максимальной мере <b>обеспечить баланс интересов заинтересованных сторон (ЗС)</b>, либо, если не удается найти баланс, понять из-за какая-то ЗС не удовлетворена. Возможно, ЗС желает инженерно-технологически достижимого решения, но абсолютно абсурдного. А может быть и наоборот, требования ЗС адекватны, но технологически недостижимы.
+        <br/><br/>
+        <b>Баланс интересов</b> – такое состояние, когда <b>интегральная степень удовлетворенности</b> всех ключевых ЗС решением достаточно высока. Достаточно высока – значит, что решение близко по своим возможностям к желаниям ЗС.
+        <br/><br/>
+        <i>Известно, что в на сегодняшний день одно из самых главных ограничений – скорость интернета.</i>
+        <br/><br/>
+        В верхней части экрана представлена схема алгоритма выполнения операций при переходе от появления необходимости в оценке системного решения до получения глобальной оценки. Выполненные шаги будут отмечаться зеленым цветом, текущий шаг – желтым, оставшиеся – белым.
+        ]]>
+    </string>
+
+    <string name="exerciseText">
+        <![CDATA[
+        Коммерческая компания (далее Компания) идентифицировала высокую потребность абонентов в развитии услуг сотовой связи в определенном регионе. Компания рассматривает возможность создания в этом регионе собственной системы сотовой телефонной связи (СТС). Коммерческая компания (далее Компания) идентифицировала высокую потребность абонентов в развитии услуг сотовой связи в определенном регионе. Компания рассматривает возможность создания в этом регионе собственной системы сотовой телефонной связи (СТС).
+        ]]>
+    </string>
+
+    <!-- AKDSSStakeholdersFragment strings -->
+
+    <string name="stakeholdersDescriptionText">
+        <![CDATA[
+        ЗС это лицо или организация, имеющие права, долю, требования или интересы к системе или к использованию её свойств, отвечающих их потребностям и ожиданиям.
+        <br/><br/>
+        Рекомендуется при принятии решений по ранжированию ЗС в равной степени учитывать два аспекта, характеризующих ЗС, а именно: степень влияния ЗС на целевую систему и степень зависимости ЗС от целевой системы.
+        <br/><br/>
+        Исходя из постановки задачи, мы выделили несколько ЗС. Вы можете дополнить список из <b>набора типовых ЗС</b>.
+        ]]>
+    </string>
+
+    <string name="addStakeholder">Добавить ЗС</string>
+    <string name="stakeholderList">Набор типовых ЗС</string>
+
+    <string name="listviewStakeholdersTitleHeader">ЗС</string>
+    <string name="listviewStakeholdersInfluenceHeader">Влияние</string>
+    <string name="listviewStakeholdersDependenceHeader">Зависимость</string>
+    <string name="listviewStakeholdersImportanceHeader">Важность</string>
+    <string name="listviewStakeholdersWeightHeader">Вес ЗС</string>
+
+    <string name="decimalTextPlaceholder">0.67</string>
+
+    <!-- AKDSSStakeholdersPickerActivity -->
+
+    <string-array name="typicalStakeholders">
+        <item>Абоненты</item>
+        <item>Акционеры</item>
+        <item>Держатели собственности</item>
+        <item>Корпоративные менеджеры</item>
+    </string-array>
+
+    <string name="stakeholder">Заинтересованная сторона</string>
+    <string name="ok">OK</string>
+
+</resources>

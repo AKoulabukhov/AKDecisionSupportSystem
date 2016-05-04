@@ -1,0 +1,103 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="layout.AKDSSLearningModeStepsFragment">
+
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/activity_akdssoverview_top_blocks_height"
+        android:id="@+id/horizontalScrollView"
+        android:scrollbars="none">
+        <!-- android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"-->
+
+        <LinearLayout android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="@dimen/activity_akdssoverview_top_blocks_width"
+                android:layout_height="match_parent"
+                android:text="@string/firstStepName"
+                android:id="@+id/firstStepTextView"
+                android:gravity="center"
+                android:background="@color/colorAKDSSLearningModeStepsFragmentStepBGColorInProgress" />
+
+            <ImageView
+                android:layout_width="@dimen/activity_akdssoverview_arrows_width"
+                android:layout_height="match_parent"
+                android:src="@drawable/adss_right_arrow_image"
+                tools:ignore="ContentDescription"/>
+
+            <TextView
+                android:layout_width="@dimen/activity_akdssoverview_top_blocks_width"
+                android:layout_height="match_parent"
+                android:text="@string/secondStepName"
+                android:id="@+id/secondStepTextView"
+                android:gravity="center"
+                android:background="@color/colorAKDSSLearningModeStepsFragmentStepBGColorInactive" />
+
+            <ImageView
+                android:layout_width="@dimen/activity_akdssoverview_arrows_width"
+                android:layout_height="match_parent"
+                android:src="@drawable/adss_right_arrow_image"
+                tools:ignore="ContentDescription"/>
+
+            <TextView
+                android:layout_width="@dimen/activity_akdssoverview_top_blocks_width"
+                android:layout_height="match_parent"
+                android:text="@string/thirdStepName"
+                android:id="@+id/thirdStepTextView"
+                android:gravity="center"
+                android:background="@color/colorAKDSSLearningModeStepsFragmentStepBGColorInactive"/>
+
+            <ImageView
+                android:layout_width="@dimen/activity_akdssoverview_arrows_width"
+                android:layout_height="match_parent"
+                android:src="@drawable/adss_right_arrow_image"
+                tools:ignore="ContentDescription"/>
+
+            <TextView
+                android:layout_width="@dimen/activity_akdssoverview_top_blocks_width"
+                android:layout_height="match_parent"
+                android:text="@string/fourthStepName"
+                android:id="@+id/fourthStepTextView"
+                android:gravity="center"
+                android:background="@color/colorAKDSSLearningModeStepsFragmentStepBGColorInactive"/>
+
+            <ImageView
+                android:layout_width="@dimen/activity_akdssoverview_arrows_width"
+                android:layout_height="match_parent"
+                android:src="@drawable/adss_right_arrow_image"
+                tools:ignore="ContentDescription"/>
+
+            <TextView
+                android:layout_width="@dimen/activity_akdssoverview_top_blocks_width"
+                android:layout_height="match_parent"
+                android:text="@string/fifthStepName"
+                android:id="@+id/fifthStepTextView"
+                android:gravity="center"
+                android:background="@color/colorAKDSSLearningModeStepsFragmentStepBGColorInactive"/>
+
+            <ImageView
+                android:layout_width="@dimen/activity_akdssoverview_arrows_width"
+                android:layout_height="match_parent"
+                android:src="@drawable/adss_right_arrow_image"
+                tools:ignore="ContentDescription"/>
+
+            <TextView
+                android:layout_width="@dimen/activity_akdssoverview_top_blocks_width"
+                android:layout_height="match_parent"
+                android:text="@string/sixthStepName"
+                android:id="@+id/sixthStepTextView"
+                android:gravity="center"
+                android:background="@color/colorAKDSSLearningModeStepsFragmentStepBGColorInactive"/>
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+</FrameLayout>

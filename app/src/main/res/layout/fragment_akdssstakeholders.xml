@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="layout.AKDSSStakeholdersFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/questImage"
+                    android:layout_width="@dimen/fragment_akdssstakeholders_quest_side_size"
+                    android:layout_height="@dimen/fragment_akdssstakeholders_quest_side_size"
+                    android:contentDescription="@string/stakeholder"
+                    android:src="@drawable/quest" />
+
+                <TextView
+                    android:id="@+id/stakeholdersInitialDescriptionTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginStart="@dimen/activity_horizontal_margin"
+                    android:layout_toEndOf="@+id/questImage"
+                    android:layout_toRightOf="@+id/questImage"
+                    android:text="@string/stakeholdersDescriptionText" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/linearButtons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2">
+
+                <Button
+                    android:id="@+id/stakeholdersListButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:layout_weight="1"
+                    android:onClick="typicalStakeholdersListClicked"
+                    android:text="@string/stakeholderList" />
+
+                <Button
+                    android:id="@+id/addStakeholderButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:layout_weight="1"
+                    android:onClick="addStakeholderClicked"
+                    android:text="@string/addStakeholder" />
+            </LinearLayout>
+
+            <com.toyoapps.dssforstudents.helpers.AKDSSScrollDisabledListView
+                android:id="@+id/stakeholdersListView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:headerDividersEnabled="false" />
+
+            <Button
+                android:id="@+id/overviewNextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:onClick="nextStepClicked"
+                android:text="@string/next" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
+
+    <!--
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="layout.AKDSSStakeholdersFragment">
+
+        <ImageView
+            android:layout_width="@dimen/fragment_akdssstakeholders_quest_side_size"
+            android:layout_height="@dimen/fragment_akdssstakeholders_quest_side_size"
+            android:contentDescription="@string/stakeholder"
+            android:src="@drawable/quest"
+            android:id="@+id/questImage"/>
+
+        <TextView
+            android:id="@+id/stakeholdersInitialDescriptionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/questImage"
+            android:layout_toRightOf="@+id/questImage"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:maxLines="3"
+            android:scrollbars="vertical"
+            android:text="@string/stakeholdersDescriptionText" />
+
+        <LinearLayout
+            android:id="@+id/linearButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/stakeholdersInitialDescriptionTextView"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/stakeholdersListButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_weight="1"
+                android:onClick="typicalStakeholdersListClicked"
+                android:text="@string/stakeholderList" />
+
+            <Button
+                android:id="@+id/addStakeholderButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_weight="1"
+                android:onClick="addStakeholderClicked"
+                android:text="@string/addStakeholder" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/overviewNextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:onClick="nextStepClicked"
+            android:layout_alignParentBottom="true"
+            android:text="@string/next" />
+
+        <ListView
+            android:id="@+id/stakeholdersListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearButtons"
+            android:layout_above="@+id/overviewNextButton"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:headerDividersEnabled="false" />
+
+    </RelativeLayout>
+
+    -->

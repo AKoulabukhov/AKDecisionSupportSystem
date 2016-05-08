@@ -29,56 +29,59 @@
                     android:src="@drawable/quest" />
 
                 <TextView
-                    android:id="@+id/stakeholdersInitialDescriptionTextView"
+                    android:id="@+id/keyStakeholdersDescriptionTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:layout_marginStart="@dimen/activity_horizontal_margin"
                     android:layout_toEndOf="@+id/questImage"
                     android:layout_toRightOf="@+id/questImage"
-                    android:text="@string/stakeholdersDescriptionText" />
+                    android:text="@string/keyStakeholdersDescriptionText" />
 
             </RelativeLayout>
 
-            <LinearLayout
-                android:id="@+id/linearButtons"
+            <Button
+                android:id="@+id/findedStakeholdersButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:weightSum="2">
 
-                <Button
-                    android:id="@+id/stakeholdersListButton"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/activity_vertical_margin"
-                    android:layout_weight="1"
-                    android:onClick="typicalStakeholdersListClicked"
-                    android:text="@string/stakeholderList" />
-
-                <Button
-                    android:id="@+id/addStakeholderButton"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/activity_vertical_margin"
-                    android:layout_weight="1"
-                    android:onClick="addStakeholderClicked"
-                    android:text="@string/addStakeholder" />
-            </LinearLayout>
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:onClick="showStakeholdersPicker"
+                android:text="@string/stakeholderListFromUser" />
 
             <com.toyoapps.dssforstudents.helpers.AKDSSScrollDisabledListView
-                android:id="@+id/stakeholdersListView"
+                android:id="@+id/keyStakeholdersListView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/activity_vertical_margin"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:headerDividersEnabled="false" />
 
-            <TextView
-                android:id="@+id/stakeholdersMapDescriptionTextView"
+            <Button
+                android:id="@+id/makeRangeKeyStakeholdersButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:text="@string/stakeholdersMapDescriptionText" />
+                android:onClick="runPairwiseComparisonForKeyStakeholders"
+                android:text="@string/makeRangeStakeholders" />
+
+            <TextView
+                android:id="@+id/keyStakeholdersRangeFinishedTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="@string/keyStakeholdersRangeFinished"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/keyStakeholdersNextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:onClick="nextStepClicked"
+                android:text="@string/next"
+                android:visibility="gone"/>
+
 
             <com.androidplot.xy.XYPlot
                 style="@style/APDefacto.Light"
@@ -89,15 +92,6 @@
                 ap:label="Карта заинтересованных сторон"
                 ap:rangeLabel="Степень влияния ЗС на систему"
                 ap:domainLabel="Степень зависимости ЗС от системы"/>
-
-            <Button
-                android:id="@+id/stakeholdersNextButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:onClick="nextStepClicked"
-                android:text="@string/next" />
 
         </LinearLayout>
 

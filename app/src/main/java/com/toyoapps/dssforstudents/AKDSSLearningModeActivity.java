@@ -14,10 +14,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.toyoapps.dssforstudents.AHP.AKAHPPairwiseComparison;
 import com.toyoapps.dssforstudents.logic.AKDSSSolver;
 import com.toyoapps.dssforstudents.models.AKDSSStakeholder;
 
+import java.util.ArrayList;
+
 import layout.AKDSSEditTextDialog;
+import layout.AKDSSKeyStakeholdersFragment;
 import layout.AKDSSLearningModeStepsFragment;
 import layout.AKDSSOverviewFragment;
 import layout.AKDSSStakeholdersFragment;
@@ -32,6 +36,7 @@ public class AKDSSLearningModeActivity extends AppCompatActivity implements AKDS
     // Algorithm parts fragments
     private AKDSSOverviewFragment overviewFragment;
     private AKDSSStakeholdersFragment stakeholdersFragment;
+    private AKDSSKeyStakeholdersFragment keyStakeholdersFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,18 +75,27 @@ public class AKDSSLearningModeActivity extends AppCompatActivity implements AKDS
                     return;
                 }
 
-                AKDSSStakeholdersFragment fragment;
-
-                if (this.stakeholdersFragment != null) {
-                    fragment = this.stakeholdersFragment;
-                }
-                else {
+                if (this.stakeholdersFragment == null) {
                     this.stakeholdersFragment = new AKDSSStakeholdersFragment();
-                    fragment = this.stakeholdersFragment;
                 }
 
-                this.presentFragment(fragment);
+                this.presentFragment(this.stakeholdersFragment);
                 this.stepsFragment.setSelectedStep(1);
+                break;
+
+            case R.id.stakeholdersNextButton:
+
+                if (!stakeholdersFragment.nextStepClicked(v)) {
+                    return;
+                }
+
+                if (this.keyStakeholdersFragment == null) {
+                    this.keyStakeholdersFragment = new AKDSSKeyStakeholdersFragment();
+                }
+
+                this.presentFragment(this.keyStakeholdersFragment);
+                this.stepsFragment.setSelectedStep(2);
+
                 break;
 
             default:
@@ -93,10 +107,6 @@ public class AKDSSLearningModeActivity extends AppCompatActivity implements AKDS
         FragmentManager fm = getSupportFragmentManager();
         AKDSSEditTextDialog editNameDialog = new AKDSSEditTextDialog();
         editNameDialog.show(fm, "fragment_akdssedit_text_dialog");
-    }
-
-    public void removeStakeholderClicked(View v) {
-
     }
 
     // MARK: Typical stakeholders logic
@@ -113,7 +123,28 @@ public class AKDSSLearningModeActivity extends AppCompatActivity implements AKDS
         stakeholdersFragment.updateList();
     }
 
-    // MARK: Dialog listener
+    public void updateKeyStakeholdersList() {
+        if (keyStakeholdersFragment == null) {
+            return;
+        }
+        keyStakeholdersFragment.updateList();
+    }
+
+    // MARK: Key stakeholders logic
+
+    public void showStakeholdersPicker(View v) {
+        Intent launchLearningStartActivityIntent = new Intent(AKDSSLearningModeActivity.this, AKDSSStakeholdersListActivity.class);
+        launchLearningStartActivityIntent.putExtra("real", "true");
+        startActivity(launchLearningStartActivityIntent);
+    }
+
+    // MARK: AHP
+
+    public void runPairwiseComparisonForKeyStakeholders(View v) {
+        Intent launchPairwiseComparisonActivityIntent = new Intent(AKDSSLearningModeActivity.this, AKAHPPairwiseComparison.class);
+        launchPairwiseComparisonActivityIntent.putExtra("alternatives", AKDSSSolver.getInstance().getKeyStakeholdersList());
+        startActivity(launchPairwiseComparisonActivityIntent);
+    }
 
     @Override
     public void onFinishEditDialog(String inputText) {

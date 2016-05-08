@@ -14,11 +14,14 @@ import android.widget.Toast;
 
 import com.toyoapps.dssforstudents.AKDSSLearningModeActivity;
 import com.toyoapps.dssforstudents.R;
+import com.toyoapps.dssforstudents.helpers.TWEditText;
 import com.toyoapps.dssforstudents.logic.AKDSSSolver;
 import com.toyoapps.dssforstudents.models.AKDSSStakeholder;
 
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.regex.Matcher;
 
 /**
@@ -59,8 +62,9 @@ public class AKDSSStakeholderListViewAdapter extends ArrayAdapter<AKDSSStakehold
         TextView titleTextView = (TextView) rowView.findViewById(R.id.stakeholderTitleTextView);
         titleTextView.setText(stakeholder.title);
 
-        EditText influenceEditText = (EditText) rowView.findViewById(R.id.stakeholderInfluenceEditText);
-        influenceEditText.setText(format.format(stakeholder.influence));
+        TWEditText influenceEditText = (TWEditText) rowView.findViewById(R.id.stakeholderInfluenceEditText);
+        influenceEditText.removeAllTextChangedListeners();
+        influenceEditText.setText(format.format(stakeholder.getInfluence()));
         influenceEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
@@ -71,20 +75,28 @@ public class AKDSSStakeholderListViewAdapter extends ArrayAdapter<AKDSSStakehold
             @Override
             public void afterTextChanged(Editable editable) {
 
-//                stakeholders.get(position).influence = doubleFromString(editable.toString());
-//
-//                try {
-//                    AKDSSLearningModeActivity activity = (AKDSSLearningModeActivity) getContext();
-//                    activity.updateStakeholdersList();
-//                }
-//                catch (Exception e) {
-//                    Toast.makeText(getContext(), "Ошибка обновления списка ЗС", Toast.LENGTH_SHORT).show();
-//                }
+                double previousValue = stakeholders.get(position).getInfluence();
+                double newValue = doubleFromString(editable.toString());
+
+                if (previousValue == newValue) {
+                    return;
+                }
+
+                stakeholders.get(position).setInfluence(newValue);
+
+                try {
+                    AKDSSLearningModeActivity activity = (AKDSSLearningModeActivity) getContext();
+                    activity.updateStakeholdersList();
+                }
+                catch (Exception e) {
+                    Toast.makeText(getContext(), "Ошибка обновления списка ЗС", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
-        EditText dependenceEditText = (EditText) rowView.findViewById(R.id.stakeholderDependenceEditText);
-        dependenceEditText.setText(format.format(stakeholder.dependence));
+        TWEditText dependenceEditText = (TWEditText) rowView.findViewById(R.id.stakeholderDependenceEditText);
+        dependenceEditText.removeAllTextChangedListeners();
+        dependenceEditText.setText(format.format(stakeholder.getDependence()));
         dependenceEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
@@ -94,15 +106,23 @@ public class AKDSSStakeholderListViewAdapter extends ArrayAdapter<AKDSSStakehold
 
             @Override
             public void afterTextChanged(Editable editable) {
-//                stakeholders.get(position).dependence = doubleFromString(editable.toString());
-//
-//                try {
-//                    AKDSSLearningModeActivity activity = (AKDSSLearningModeActivity) getContext();
-//                    activity.updateStakeholdersList();
-//                }
-//                catch (Exception e) {
-//                    Toast.makeText(getContext(), "Ошибка обновления списка ЗС", Toast.LENGTH_SHORT).show();
-//                }
+
+                double previousValue = stakeholders.get(position).getDependence();
+                double newValue = doubleFromString(editable.toString());
+
+                if (previousValue == newValue) {
+                    return;
+                }
+
+                stakeholders.get(position).setDependence(newValue);
+
+                try {
+                    AKDSSLearningModeActivity activity = (AKDSSLearningModeActivity) getContext();
+                    activity.updateStakeholdersList();
+                }
+                catch (Exception e) {
+                    Toast.makeText(getContext(), "Ошибка обновления списка ЗС", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -160,8 +180,17 @@ public class AKDSSStakeholderListViewAdapter extends ArrayAdapter<AKDSSStakehold
 
         } else {
 
-            return Double.parseDouble(string);
-
+            NumberFormat format = NumberFormat.getInstance(Locale.getDefault());
+            try {
+                Number number = format.parse(string);
+                double value = number.doubleValue();
+                if (value > 1) value = 1.0;
+                if (value < 0) value = 0;
+                return value;
+            }
+            catch (Exception e) {
+                return 0.0;
+            }
         }
     }
 

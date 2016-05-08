@@ -15,8 +15,8 @@ public class AKDSSStakeholder {
     // MARK: User input
 
     public String title;
-    public double influence = 0;
-    public double dependence = 0;
+    private double influence = 0;
+    private double dependence = 0;
 
     // MARK: Calculated fields
 
@@ -26,6 +26,14 @@ public class AKDSSStakeholder {
     public double weight = 0;
 
     public void setImportance(double importance) {}
+
+    public double getInfluence() {
+        return this.influence;
+    }
+
+    public double getDependence() {
+        return this.dependence;
+    }
 
     public void setInfluence(double influence) {
         this.influence = influence;

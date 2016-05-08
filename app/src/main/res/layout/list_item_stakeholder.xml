@@ -12,7 +12,7 @@
         android:text="Small Text"
         android:id="@+id/stakeholderTitleTextView" />
 
-    <EditText
+    <com.toyoapps.dssforstudents.helpers.TWEditText
         android:layout_width="@dimen/fragment_akdssstakeholders_table_blocks_width"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -20,7 +20,7 @@
         android:text="@string/decimalTextPlaceholder"
         android:id="@+id/stakeholderInfluenceEditText" />
 
-    <EditText
+    <com.toyoapps.dssforstudents.helpers.TWEditText
         android:layout_width="@dimen/fragment_akdssstakeholders_table_blocks_width"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"

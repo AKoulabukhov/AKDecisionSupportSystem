@@ -56,6 +56,12 @@
 
     <string name="decimalTextPlaceholder">0.67</string>
 
+    <string name="stakeholdersMapDescriptionText">
+        Ниже формируется карта заинтересованных сторон. Она дает наглядное представление важности ЗС самой по себе, а также по сравнению с другими.
+        \n\n
+        Попробуйте на основании карты сделать выводы о том, какие ЗС не являются ключевыми. На следующем этапе нужно будет заново составить список и включить в него только ключевые ЗС.
+    </string>
+
     <!-- AKDSSStakeholdersPickerActivity -->
 
     <string-array name="typicalStakeholders">
@@ -67,5 +73,23 @@
 
     <string name="stakeholder">Заинтересованная сторона</string>
     <string name="ok">OK</string>
+
+    <!-- AKDSSKeyStakeholders Fragment -->
+    <string name="keyStakeholdersDescriptionText">
+        Составьте заново список, который будет включать только ключевые ЗС. Если у Вас возникают трудности, пролистайте вниз и снова изучите карту ЗС.
+        \n\n
+        Когда Вы закончите со списком ключевых ЗС, необходимо будет провести повторное ранжирование. Для этого воспользуемся Методом анализа иерархий. Нажмите кнопку «Проранжировать».
+    </string>
+
+    <string name="stakeholderListFromUser">Добавить ключевую ЗС</string>
+    <string name="makeRangeStakeholders">Проранжировать ключевые ЗС</string>
+    <string name="keyStakeholdersRangeFinished">Ранжирование завершено! Настало время выяснить чего же хотят наши ключевые ЗС и сможет ли наше решение их удовлетворить.</string>
+
+    <string name="keyStakeholder">Ключевая ЗС</string>
+
+    <!-- Analytic Hierarchy Process -->
+    <string name="pairwiseComparison">Попарное сравнение альтернатив</string>
+    <string name="ready">Готово</string>
+    <string name="sampleText">Пример текста</string>
 
 </resources>

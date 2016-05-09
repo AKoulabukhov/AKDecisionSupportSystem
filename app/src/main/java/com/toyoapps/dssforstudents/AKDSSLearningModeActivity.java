@@ -16,6 +16,7 @@ import android.widget.VideoView;
 
 import com.toyoapps.dssforstudents.AHP.AKAHPPairwiseComparison;
 import com.toyoapps.dssforstudents.logic.AKDSSSolver;
+import com.toyoapps.dssforstudents.models.AKDSSKeyStakeholder;
 import com.toyoapps.dssforstudents.models.AKDSSStakeholder;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import layout.AKDSSLearningModeStepsFragment;
 import layout.AKDSSOverviewFragment;
 import layout.AKDSSStakeholdersFragment;
 
-public class AKDSSLearningModeActivity extends AppCompatActivity implements AKDSSEditTextDialog.AKDSSEditTextDialogListener {
+public class AKDSSLearningModeActivity extends AppCompatActivity implements AKDSSEditTextDialog.AKDSSEditTextDialogListener, AKAHPPairwiseComparison.AKAHPPairwiseComparisonDelegate {
 
     public static AKDSSLearningModeActivity lastCreatedActivity;
 
@@ -130,6 +131,13 @@ public class AKDSSLearningModeActivity extends AppCompatActivity implements AKDS
         keyStakeholdersFragment.updateList();
     }
 
+    public void setKeyStakeholdersRangingFinished() {
+        if (keyStakeholdersFragment == null) {
+            return;
+        }
+        keyStakeholdersFragment.setRangingFinished(true);
+    }
+
     // MARK: Key stakeholders logic
 
     public void showStakeholdersPicker(View v) {
@@ -141,6 +149,7 @@ public class AKDSSLearningModeActivity extends AppCompatActivity implements AKDS
     // MARK: AHP
 
     public void runPairwiseComparisonForKeyStakeholders(View v) {
+        AKAHPPairwiseComparison.delegate = this;
         Intent launchPairwiseComparisonActivityIntent = new Intent(AKDSSLearningModeActivity.this, AKAHPPairwiseComparison.class);
         launchPairwiseComparisonActivityIntent.putExtra("alternatives", AKDSSSolver.getInstance().getKeyStakeholdersList());
         startActivity(launchPairwiseComparisonActivityIntent);
@@ -150,5 +159,14 @@ public class AKDSSLearningModeActivity extends AppCompatActivity implements AKDS
     public void onFinishEditDialog(String inputText) {
         AKDSSSolver.getInstance().addStakeholder(new AKDSSStakeholder(inputText));
         this.updateStakeholdersList();
+    }
+
+    @Override
+    public void AKAHPPairwiseComparisonDidFinished(ArrayList<String> alternatives, ArrayList<Double> results) {
+        for (int i = 0; i < AKDSSSolver.getInstance().getKeyStakeholders().size(); i++) {
+            AKDSSSolver.getInstance().getKeyStakeholders().get(i).setWeight(results.get(i));
+        }
+        this.updateKeyStakeholdersList();
+        this.setKeyStakeholdersRangingFinished();
     }
 }

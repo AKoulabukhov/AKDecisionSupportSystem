@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:ap="http://schemas.android.com/apk/res-auto"
+    tools:context="layout.AKDSSNeedsIdentifyingFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/questImage"
+                    android:layout_width="@dimen/fragment_akdssstakeholders_quest_side_size"
+                    android:layout_height="@dimen/fragment_akdssstakeholders_quest_side_size"
+                    android:contentDescription="@string/stakeholder"
+                    android:src="@drawable/quest" />
+
+                <TextView
+                    android:id="@+id/needsIndentifyingFirstTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginStart="@dimen/activity_horizontal_margin"
+                    android:layout_toEndOf="@+id/questImage"
+                    android:layout_toRightOf="@+id/questImage"
+                    android:text="@string/needsIndentifyingFirstText" />
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/needsImage"
+                android:layout_width="match_parent"
+                android:adjustViewBounds="true"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/stakeholder"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:src="@drawable/needs" />
+
+            <TextView
+                android:id="@+id/needsIndentifyingSecondTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="@string/needsIndentifyingSecondText" />
+
+            <com.toyoapps.dssforstudents.helpers.AKDSSScrollDisabledListView
+                android:id="@+id/needsListView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:headerDividersEnabled="false" />
+
+            <Button
+                android:id="@+id/keyStakeholdersNextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:onClick="nextStepClicked"
+                android:text="@string/next"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import layout.AKDSSEditTextDialog;
 import layout.AKDSSKeyStakeholdersFragment;
 import layout.AKDSSLearningModeStepsFragment;
+import layout.AKDSSNeedsIdentifyingFragment;
 import layout.AKDSSOverviewFragment;
 import layout.AKDSSStakeholdersFragment;
 
@@ -38,6 +39,7 @@ public class AKDSSLearningModeActivity extends AppCompatActivity implements AKDS
     private AKDSSOverviewFragment overviewFragment;
     private AKDSSStakeholdersFragment stakeholdersFragment;
     private AKDSSKeyStakeholdersFragment keyStakeholdersFragment;
+    private AKDSSNeedsIdentifyingFragment needsIdentifyingFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +98,21 @@ public class AKDSSLearningModeActivity extends AppCompatActivity implements AKDS
 
                 this.presentFragment(this.keyStakeholdersFragment);
                 this.stepsFragment.setSelectedStep(2);
+
+                break;
+
+            case R.id.keyStakeholdersNextButton:
+
+                if (!stakeholdersFragment.nextStepClicked(v)) {
+                    return;
+                }
+
+                if (this.needsIdentifyingFragment == null) {
+                    this.needsIdentifyingFragment = new AKDSSNeedsIdentifyingFragment();
+                }
+
+                this.presentFragment(this.needsIdentifyingFragment);
+                this.stepsFragment.setSelectedStep(3);
 
                 break;
 

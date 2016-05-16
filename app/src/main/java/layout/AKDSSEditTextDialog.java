@@ -36,23 +36,16 @@ public class AKDSSEditTextDialog extends DialogFragment implements TextView.OnEd
     }
 
     public AKDSSEditTextDialog() {
-        dialogType = DialogType.DIALOG_TYPE_STAKEHOLDER;
+        this.dialogType = DialogType.DIALOG_TYPE_STAKEHOLDER;
     }
 
     public void setDialogType(DialogType dialogType) {
-        this.dialogType = dialogType;
 
-        switch (dialogType) {
-            case DIALOG_TYPE_STAKEHOLDER:
-                getDialog().setTitle("Добавить ЗС");
-                mEditText.setHint("Заинтересованная сторона");
-                break;
-            case DIALOG_TYPE_STAKEHOLDER_NEEDS:
-                getDialog().setTitle("Добавить потребность");
-                mEditText.setHint("Название потребности");
-                break;
+        if (this.dialogType == dialogType) {
+            return;
         }
 
+        this.dialogType = dialogType;
     }
 
     public DialogType getDialogType() {
@@ -72,7 +65,16 @@ public class AKDSSEditTextDialog extends DialogFragment implements TextView.OnEd
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         mEditText.setOnEditorActionListener(this);
 
-        this.setDialogType(this.dialogType);
+        switch (this.dialogType) {
+            case DIALOG_TYPE_STAKEHOLDER:
+                getDialog().setTitle("Добавить ЗС");
+                mEditText.setHint("Заинтересованная сторона");
+                break;
+            case DIALOG_TYPE_STAKEHOLDER_NEEDS:
+                getDialog().setTitle("Добавить потребность");
+                mEditText.setHint("Название потребности");
+                break;
+        }
 
         return view;
     }

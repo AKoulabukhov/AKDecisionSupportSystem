@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.toyoapps.dssforstudents.R;
+import com.toyoapps.dssforstudents.listadapters.AKDSSKeyStakeholdersNeedsAdapter;
 import com.toyoapps.dssforstudents.logic.AKDSSSolver;
 
 /**
@@ -16,6 +17,7 @@ import com.toyoapps.dssforstudents.logic.AKDSSSolver;
  */
 public class AKDSSNeedsIdentifyingFragment extends Fragment {
 
+    public ListView needsListView;
 
     public AKDSSNeedsIdentifyingFragment() { }
 
@@ -30,14 +32,12 @@ public class AKDSSNeedsIdentifyingFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         if (view != null) {
+            needsListView = (ListView) view.findViewById(R.id.needsListView);
+            View header = getActivity().getLayoutInflater().inflate(R.layout.listview_header_needs, null);
+            needsListView.addHeaderView(header);
 
-//            keyStakeholdersListView = (ListView) view.findViewById(R.id.keyStakeholdersListView);
-//            View header = getActivity().getLayoutInflater().inflate(R.layout.listview_header_key_stakeholders,null);
-//            keyStakeholdersListView.addHeaderView(header);
-//
-//            AKDSSKeyStakeholdersAdapter adapter = new AKDSSKeyStakeholdersAdapter(this.getContext(), AKDSSSolver.getInstance().getKeyStakeholders());
-//            keyStakeholdersListView.setAdapter(adapter);
-
+            AKDSSKeyStakeholdersNeedsAdapter adapter = new AKDSSKeyStakeholdersNeedsAdapter(this.getContext(), AKDSSSolver.getInstance().getKeyStakeholders());
+            needsListView.setAdapter(adapter);
         }
     }
 

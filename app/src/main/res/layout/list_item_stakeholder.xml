@@ -10,25 +10,23 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Small Text"
-        android:id="@+id/needTitleTextView" />
+        android:id="@+id/stakeholderTitleTextView" />
 
     <com.toyoapps.dssforstudents.helpers.TWEditText
-        android:layout_width="0dp"
-        android:layout_weight="1"
+        android:layout_width="@dimen/fragment_akdssstakeholders_table_blocks_width"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:inputType="numberDecimal"
-        android:text="Small Text"
-        android:id="@+id/needParameterEditText" />
+        android:text="@string/decimalTextPlaceholder"
+        android:id="@+id/stakeholderInfluenceEditText" />
 
     <com.toyoapps.dssforstudents.helpers.TWEditText
-        android:layout_width="0dp"
-        android:layout_weight="0.5"
+        android:layout_width="@dimen/fragment_akdssstakeholders_table_blocks_width"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:gravity="center"
-        android:text="Small Text"
-        android:id="@+id/needParameterUnitEditText" />
+        android:text="@string/decimalTextPlaceholder"
+        android:id="@+id/stakeholderDependenceEditText" />
 
     <TextView
         android:layout_width="@dimen/fragment_akdssstakeholders_table_blocks_width"

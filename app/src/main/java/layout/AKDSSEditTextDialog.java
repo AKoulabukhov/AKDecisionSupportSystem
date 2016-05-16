@@ -22,16 +22,42 @@ import com.toyoapps.dssforstudents.R;
  */
 public class AKDSSEditTextDialog extends DialogFragment implements TextView.OnEditorActionListener {
 
+    public enum DialogType {
+        DIALOG_TYPE_STAKEHOLDER,
+        DIALOG_TYPE_STAKEHOLDER_NEEDS
+    }
+
     private EditText mEditText;
+    private DialogType dialogType;
+    public Object connectedObject = null;
 
     public interface AKDSSEditTextDialogListener {
-        void onFinishEditDialog(String inputText);
+        void onFinishEditDialog(AKDSSEditTextDialog dialog, String inputText);
     }
 
     public AKDSSEditTextDialog() {
-        // Required empty public constructor
+        dialogType = DialogType.DIALOG_TYPE_STAKEHOLDER;
     }
 
+    public void setDialogType(DialogType dialogType) {
+        this.dialogType = dialogType;
+
+        switch (dialogType) {
+            case DIALOG_TYPE_STAKEHOLDER:
+                getDialog().setTitle("Добавить ЗС");
+                mEditText.setHint("Заинтересованная сторона");
+                break;
+            case DIALOG_TYPE_STAKEHOLDER_NEEDS:
+                getDialog().setTitle("Добавить потребность");
+                mEditText.setHint("Название потребности");
+                break;
+        }
+
+    }
+
+    public DialogType getDialogType() {
+        return this.dialogType;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,7 +72,7 @@ public class AKDSSEditTextDialog extends DialogFragment implements TextView.OnEd
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         mEditText.setOnEditorActionListener(this);
 
-        getDialog().setTitle("Добавить ЗС");
+        this.setDialogType(this.dialogType);
 
         return view;
     }
@@ -56,7 +82,7 @@ public class AKDSSEditTextDialog extends DialogFragment implements TextView.OnEd
         if (EditorInfo.IME_ACTION_DONE == i) {
             try {
                 AKDSSEditTextDialogListener activity = (AKDSSEditTextDialogListener) getActivity();
-                activity.onFinishEditDialog(mEditText.getText().toString());
+                activity.onFinishEditDialog(this, mEditText.getText().toString());
                 this.dismiss();
                 return true;
             }

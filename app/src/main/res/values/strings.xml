@@ -112,5 +112,6 @@
     <string name="unit">Ед. изм.</string>
     <string name="weight">Вес</string>
     <string name="needImportance_1_10">Важность (1-10)</string>
+    <string name="addNeedForStakeholder">Добавить потребность</string>
 
 </resources>

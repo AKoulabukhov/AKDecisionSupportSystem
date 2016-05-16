@@ -124,6 +124,7 @@ public class AKDSSLearningModeActivity extends AppCompatActivity implements AKDS
     public void addStakeholderClicked(View v) {
         FragmentManager fm = getSupportFragmentManager();
         AKDSSEditTextDialog editNameDialog = new AKDSSEditTextDialog();
+        editNameDialog.setDialogType(AKDSSEditTextDialog.DialogType.DIALOG_TYPE_STAKEHOLDER);
         editNameDialog.show(fm, "fragment_akdssedit_text_dialog");
     }
 
@@ -173,9 +174,17 @@ public class AKDSSLearningModeActivity extends AppCompatActivity implements AKDS
     }
 
     @Override
-    public void onFinishEditDialog(String inputText) {
-        AKDSSSolver.getInstance().addStakeholder(new AKDSSStakeholder(inputText));
-        this.updateStakeholdersList();
+    public void onFinishEditDialog(AKDSSEditTextDialog dialog, String inputText) {
+        if (dialog.getDialogType() == AKDSSEditTextDialog.DialogType.DIALOG_TYPE_STAKEHOLDER) {
+            AKDSSSolver.getInstance().addStakeholder(new AKDSSStakeholder(inputText));
+            this.updateStakeholdersList();
+        }
+        if (dialog.getDialogType() == AKDSSEditTextDialog.DialogType.DIALOG_TYPE_STAKEHOLDER_NEEDS) {
+
+            AKDSSKeyStakeholder stakeholder = (AKDSSKeyStakeholder) dialog.connectedObject;
+            stakeholder.addNeed(inputText);
+
+        }
     }
 
     @Override
@@ -186,4 +195,14 @@ public class AKDSSLearningModeActivity extends AppCompatActivity implements AKDS
         this.updateKeyStakeholdersList();
         this.setKeyStakeholdersRangingFinished();
     }
+
+    // MARK: Stakeholder needs logic
+
+    public void addNeedForKeyStakeholder(AKDSSKeyStakeholder stakeholder) {
+        FragmentManager fm = getSupportFragmentManager();
+        AKDSSEditTextDialog editNameDialog = new AKDSSEditTextDialog();
+        editNameDialog.setDialogType(AKDSSEditTextDialog.DialogType.DIALOG_TYPE_STAKEHOLDER_NEEDS);
+        editNameDialog.show(fm, "fragment_akdssedit_text_dialog");
+    }
+
 }

@@ -69,4 +69,7 @@ public class AKDSSNeed {
     public void setWeight(double weight) {
         this.weight = weight;
     }
+
+    public AKDSSKeyStakeholder getStakeholder() { return this.stakeholder; }
+
 }

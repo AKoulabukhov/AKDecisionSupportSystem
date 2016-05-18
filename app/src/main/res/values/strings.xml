@@ -109,9 +109,11 @@
     </string>
     <string name="need">Потребность</string>
     <string name="keyParameter">Ключевой показатель</string>
+    <string name="parameter">Показатель</string>
     <string name="unit">Ед. изм.</string>
     <string name="weight">Вес</string>
     <string name="needImportance_1_10">Важность (1-10)</string>
+    <string name="importanceRange">1-10</string>
     <string name="addNeedForStakeholder">Добавить потребность</string>
 
 </resources>

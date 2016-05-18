@@ -1,5 +1,6 @@
 package com.toyoapps.dssforstudents.listadapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -65,7 +66,13 @@ public class AKDSSKeyStakeholdersNeedsAdapter extends ArrayAdapter<Object> {
         View rowView = new View(context);
 
         if (rowType == RowType.ROW_TYPE_STAKEHOLDER) {
-            rowView = inflater.inflate(R.layout.list_item_need_stakeholder, parent, false);
+
+            if (convertView != null && convertView.findViewById(R.id.needStakeholderTitleTextView) != null) {
+                rowView = convertView;
+            }
+            else {
+                rowView = inflater.inflate(R.layout.list_item_need_stakeholder, parent, false);
+            }
 
             final AKDSSKeyStakeholder stakeholder = this.stakeholderFromPosition(position);
 
@@ -93,7 +100,12 @@ public class AKDSSKeyStakeholdersNeedsAdapter extends ArrayAdapter<Object> {
         }
 
         if (rowType == RowType.ROW_TYPE_NEED) {
-            rowView = inflater.inflate(R.layout.list_item_need, parent, false);
+            if (convertView != null && convertView.findViewById(R.id.needTitleTextView) != null) {
+                rowView = convertView;
+            }
+            else {
+                rowView = inflater.inflate(R.layout.list_item_need, parent, false);
+            }
 
             final AKDSSNeed need = this.needFromPosition(position);
 
@@ -104,7 +116,7 @@ public class AKDSSKeyStakeholdersNeedsAdapter extends ArrayAdapter<Object> {
             TextView titleTextView = (TextView) rowView.findViewById(R.id.needTitleTextView);
             titleTextView.setText(need.getName());
 
-            TWEditText parameterEditText = (TWEditText) rowView.findViewById(R.id.needParameterEditText);
+            final TWEditText parameterEditText = (TWEditText) rowView.findViewById(R.id.needParameterEditText);
             parameterEditText.removeAllTextChangedListeners();
             parameterEditText.setText(need.getKeyParameter());
             parameterEditText.addTextChangedListener(new TextWatcher() {
@@ -136,9 +148,25 @@ public class AKDSSKeyStakeholdersNeedsAdapter extends ArrayAdapter<Object> {
                 }
             });
 
-            DecimalFormat format = new DecimalFormat("#.00");
 
-            TWEditText parameterImporatnceEditText = (TWEditText) rowView.findViewById(R.id.needImportanceTextView);
+            DecimalFormat decimalFormat = new DecimalFormat("#.00");
+            TextView weightTextView = (TextView) rowView.findViewById(R.id.needWeightTextView);
+            weightTextView.setText(decimalFormat.format(need.getWeight()));
+
+            if (this.needs.contains(need)) {
+                int index = this.needs.indexOf(need);
+                this.weightTextViews.set(index, weightTextView);
+            }
+            else {
+                this.needs.add(need);
+                this.weightTextViews.add(weightTextView);
+            }
+
+
+
+            final DecimalFormat format = new DecimalFormat("#");
+
+            final TWEditText parameterImporatnceEditText = (TWEditText) rowView.findViewById(R.id.needImportanceTextView);
             parameterImporatnceEditText.removeAllTextChangedListeners();
             parameterImporatnceEditText.setText(format.format(need.getImportance()));
             parameterImporatnceEditText.addTextChangedListener(new TextWatcher() {
@@ -151,21 +179,29 @@ public class AKDSSKeyStakeholdersNeedsAdapter extends ArrayAdapter<Object> {
                 @Override
                 public void afterTextChanged(Editable editable) {
                     need.setImportance(doubleFromString(editable.toString()));
-                    AKDSSKeyStakeholdersNeedsAdapter.this.updateWeights();
+//                    ArrayList<TextWatcher> listeners = parameterImporatnceEditText.getTextChangedListeners();
+//                    parameterImporatnceEditText.removeAllTextChangedListeners();
+//                    parameterImporatnceEditText.setText(format.format(need.getImportance()));
+//                    parameterImporatnceEditText.setTextChangedListeners(listeners);
+
+                    ((Activity) AKDSSKeyStakeholdersNeedsAdapter.this.context).runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            AKDSSKeyStakeholdersNeedsAdapter.this.updateWeights();
+                        }
+                    });
                 }
             });
 
-            TextView weightTextView = (TextView) rowView.findViewById(R.id.needWeightTextView);
-            weightTextView.setText(format.format(need.getWeight()));
+            Button deleteButton = (Button) rowView.findViewById(R.id.needDeleteButton);
+            deleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    need.getStakeholder().removeNeed(need);
+                    AKDSSKeyStakeholdersNeedsAdapter.this.notifyDataSetChanged();
+                }
+            });
 
-            if (this.needs.contains(need)) {
-                int index = this.needs.indexOf(need);
-                this.weightTextViews.set(index, weightTextView);
-            }
-            else {
-                this.needs.add(need);
-                this.weightTextViews.add(weightTextView);
-            }
         }
 
         return rowView;
@@ -280,7 +316,11 @@ public class AKDSSKeyStakeholdersNeedsAdapter extends ArrayAdapter<Object> {
     private void updateWeights() {
         DecimalFormat format = new DecimalFormat("#.00");
         for (int i = 0; i < needs.size(); i++) {
-            weightTextViews.get(i).setText(format.format(needs.get(i).getWeight()));
+            final TextView textView = weightTextViews.get(i);
+            AKDSSNeed need = needs.get(i);
+            double weight = need.getWeight();
+            final String weightString = format.format(weight);
+            textView.setText(weightString);
         }
     }
 

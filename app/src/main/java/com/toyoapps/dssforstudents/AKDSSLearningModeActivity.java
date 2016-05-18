@@ -116,6 +116,14 @@ public class AKDSSLearningModeActivity extends AppCompatActivity implements AKDS
 
                 break;
 
+            case R.id.needsIdentifyingNextButton:
+
+                
+
+                this.stepsFragment.setSelectedStep(4);
+
+                break;
+
             default:
                 break;
         }
@@ -124,7 +132,7 @@ public class AKDSSLearningModeActivity extends AppCompatActivity implements AKDS
     public void addStakeholderClicked(View v) {
         FragmentManager fm = getSupportFragmentManager();
         AKDSSEditTextDialog editNameDialog = new AKDSSEditTextDialog();
-        editNameDialog.setDialogType(AKDSSEditTextDialog.DialogType.DIALOG_TYPE_STAKEHOLDER);
+        editNameDialog.dialogType = AKDSSEditTextDialog.DialogType.DIALOG_TYPE_STAKEHOLDER;
         editNameDialog.show(fm, "fragment_akdssedit_text_dialog");
     }
 
@@ -175,11 +183,11 @@ public class AKDSSLearningModeActivity extends AppCompatActivity implements AKDS
 
     @Override
     public void onFinishEditDialog(AKDSSEditTextDialog dialog, String inputText) {
-        if (dialog.getDialogType() == AKDSSEditTextDialog.DialogType.DIALOG_TYPE_STAKEHOLDER) {
+        if (dialog.dialogType == AKDSSEditTextDialog.DialogType.DIALOG_TYPE_STAKEHOLDER) {
             AKDSSSolver.getInstance().addStakeholder(new AKDSSStakeholder(inputText));
             this.updateStakeholdersList();
         }
-        if (dialog.getDialogType() == AKDSSEditTextDialog.DialogType.DIALOG_TYPE_STAKEHOLDER_NEEDS) {
+        if (dialog.dialogType == AKDSSEditTextDialog.DialogType.DIALOG_TYPE_STAKEHOLDER_NEEDS) {
 
             AKDSSKeyStakeholder stakeholder = (AKDSSKeyStakeholder) dialog.connectedObject;
             stakeholder.addNeed(inputText);
@@ -201,7 +209,8 @@ public class AKDSSLearningModeActivity extends AppCompatActivity implements AKDS
     public void addNeedForKeyStakeholder(AKDSSKeyStakeholder stakeholder) {
         FragmentManager fm = getSupportFragmentManager();
         AKDSSEditTextDialog editNameDialog = new AKDSSEditTextDialog();
-        editNameDialog.setDialogType(AKDSSEditTextDialog.DialogType.DIALOG_TYPE_STAKEHOLDER_NEEDS);
+        editNameDialog.dialogType = AKDSSEditTextDialog.DialogType.DIALOG_TYPE_STAKEHOLDER_NEEDS;
+        editNameDialog.connectedObject = stakeholder;
         editNameDialog.show(fm, "fragment_akdssedit_text_dialog");
     }
 

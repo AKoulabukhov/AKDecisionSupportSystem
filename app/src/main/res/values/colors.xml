@@ -3,6 +3,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorLightGrey">#ddd</color>
 
     <!-- AKDSSLearningModeStepsFragment colors -->
     <color name="colorAKDSSLearningModeStepsFragmentStepBGColorCompleted">#95e74d</color>

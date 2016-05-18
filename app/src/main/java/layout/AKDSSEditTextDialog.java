@@ -28,7 +28,7 @@ public class AKDSSEditTextDialog extends DialogFragment implements TextView.OnEd
     }
 
     private EditText mEditText;
-    private DialogType dialogType;
+    public DialogType dialogType;
     public Object connectedObject = null;
 
     public interface AKDSSEditTextDialogListener {
@@ -37,19 +37,6 @@ public class AKDSSEditTextDialog extends DialogFragment implements TextView.OnEd
 
     public AKDSSEditTextDialog() {
         this.dialogType = DialogType.DIALOG_TYPE_STAKEHOLDER;
-    }
-
-    public void setDialogType(DialogType dialogType) {
-
-        if (this.dialogType == dialogType) {
-            return;
-        }
-
-        this.dialogType = dialogType;
-    }
-
-    public DialogType getDialogType() {
-        return this.dialogType;
     }
 
     @Override

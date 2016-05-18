@@ -64,13 +64,12 @@
                 android:headerDividersEnabled="false" />
 
             <Button
-                android:id="@+id/keyStakeholdersNextButton"
+                android:id="@+id/needsIdentifyingNextButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:onClick="nextStepClicked"
-                android:text="@string/next"
-                android:visibility="gone"/>
+                android:text="@string/next" />
 
         </LinearLayout>
 

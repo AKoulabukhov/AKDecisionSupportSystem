@@ -8,17 +8,17 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".AKDSSLearningModeActivity">
+    tools:context=".activities.AKDSSLearningModeActivity">
 
     <fragment
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:name="layout.AKDSSLearningModeStepsFragment"
+        android:name="com.toyoapps.dssforstudents.fragments.AKDSSLearningModeStepsFragment"
         android:id="@+id/stepsFragment"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         tools:layout="@layout/fragment_akdsslearning_mode_steps"
-        class="layout.AKDSSLearningModeStepsFragment" />
+        class="com.toyoapps.dssforstudents.fragments.AKDSSLearningModeStepsFragment" />
 
     <FrameLayout
         android:layout_width="match_parent"

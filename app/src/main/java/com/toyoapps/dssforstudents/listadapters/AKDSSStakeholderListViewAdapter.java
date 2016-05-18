@@ -8,11 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.toyoapps.dssforstudents.AKDSSLearningModeActivity;
+import com.toyoapps.dssforstudents.activities.AKDSSLearningModeActivity;
 import com.toyoapps.dssforstudents.R;
 import com.toyoapps.dssforstudents.helpers.TWEditText;
 import com.toyoapps.dssforstudents.logic.AKDSSSolver;
@@ -22,7 +21,6 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
-import java.util.regex.Matcher;
 
 /**
  * Created by toyo on 03/05/16.

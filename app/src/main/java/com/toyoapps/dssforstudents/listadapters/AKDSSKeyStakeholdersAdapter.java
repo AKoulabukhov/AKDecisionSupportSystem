@@ -1,8 +1,6 @@
 package com.toyoapps.dssforstudents.listadapters;
 
 import android.content.Context;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,17 +9,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.toyoapps.dssforstudents.AKDSSLearningModeActivity;
+import com.toyoapps.dssforstudents.activities.AKDSSLearningModeActivity;
 import com.toyoapps.dssforstudents.R;
-import com.toyoapps.dssforstudents.helpers.TWEditText;
 import com.toyoapps.dssforstudents.logic.AKDSSSolver;
 import com.toyoapps.dssforstudents.models.AKDSSKeyStakeholder;
-import com.toyoapps.dssforstudents.models.AKDSSStakeholder;
 
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Locale;
 
 /**
  * Created by toyo on 08/05/16.

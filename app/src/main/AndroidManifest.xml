@@ -8,15 +8,15 @@
         android:label="@string/app_label"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AKDSSMainMenuActivity">
+        <activity android:name=".activities.AKDSSMainMenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AKDSSLearningModeActivity" />
-        <activity android:name=".AKDSSStakeholdersListActivity" />
+        <activity android:name=".activities.AKDSSLearningModeActivity" />
+        <activity android:name=".activities.AKDSSStakeholdersListActivity" />
         <activity android:name=".AHP.AKAHPPairwiseComparison"></activity>
     </application>
 

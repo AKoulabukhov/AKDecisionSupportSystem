@@ -12,19 +12,16 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.toyoapps.dssforstudents.AKDSSLearningModeActivity;
+import com.toyoapps.dssforstudents.activities.AKDSSLearningModeActivity;
 import com.toyoapps.dssforstudents.R;
 import com.toyoapps.dssforstudents.helpers.TWEditText;
-import com.toyoapps.dssforstudents.logic.AKDSSSolver;
 import com.toyoapps.dssforstudents.models.AKDSSKeyStakeholder;
 import com.toyoapps.dssforstudents.models.AKDSSNeed;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Dictionary;
 import java.util.Locale;
-import java.util.Objects;
 
 /**
  * Created by toyo on 15/05/16.

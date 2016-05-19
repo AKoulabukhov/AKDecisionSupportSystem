@@ -116,6 +116,19 @@
     <string name="importanceRange">1-10</string>
     <string name="addNeedForStakeholder">Добавить потребность</string>
 
+    <!-- AKDSSNormalizeParameters Fragment -->
+    <string name="normalizeParametersHelpText">
+        Теперь мы знаем значимость ЗС и значимость потребностей ЗС. Но осталось самое главное – понять в количественном выражении чего ключевые ЗС ждут от системы. Для этого используем метод линейной интерполяции. Для получения количественной оценки нам нужно знать три базовых значения:
+        1. <b><font color="red">Худшее</font></b> ожидание значения показателя для ЗС, значения ниже которого являются абсолютно неприемлемыми.
+        2. <b><font color="green">Лучшее</font></b> возможное значение показателя в ожиданиях ЗС.
+        3. <b><font color="blue">Наиболее ожидаемое</font></b> значение показателя.
+        <br /><br />
+        Далее будет необходимо указать эти три значения для каждой ЗС по каждому из ранее выделенных для нее ключевого показателя.
+    </string>
+    <string name="bad_values_string">Значение, ниже которого варианты не рассматриваются вообще</string>
+    <string name="expected_value">Значение, которое заинтересованная сторона ожидает от создаваемой системы</string>
+    <string name="max_value">Максимальное технологически достижимое значение</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

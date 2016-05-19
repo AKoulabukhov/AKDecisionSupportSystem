@@ -13,4 +13,8 @@
     <dimen name="fragment_akdssstakeholders_table_blocks_width">60dp</dimen>
     <dimen name="fragment_akdssstakeholders_quest_side_size">40dp</dimen>
 
+    <!-- AKDSSNormalizeParameters Fragment -->
+    <dimen name="fragment_akdss_normalizeparameters_block_width">120dp</dimen>
+    <dimen name="fragment_akdss_normalizeparameters_image_size">40dp</dimen>
+
 </resources>

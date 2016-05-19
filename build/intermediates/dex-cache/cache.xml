@@ -1,12 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" >
-
-    <item
-        jar="/Users/toyo/Desktop/AKDecisionSupportSystem/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="2514639c7cf7d6e17fa2c7f37ed4d9c2eaf79795">
-        <dex dex="/Users/toyo/Desktop/AKDecisionSupportSystem/app/build/intermediates/pre-dexed/debug/instant-run-bootstrap_cb2116cb30b469dcae8e658e960bbe8761c303a5.jar" />
-    </item>
-
-</items>
+<items version="2" />

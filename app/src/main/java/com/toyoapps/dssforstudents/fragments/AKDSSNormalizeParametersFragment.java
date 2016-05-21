@@ -3,6 +3,8 @@ package com.toyoapps.dssforstudents.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.toyoapps.dssforstudents.R;
 import com.toyoapps.dssforstudents.helpers.IXmlNextStepClickable;
@@ -20,7 +23,9 @@ import com.toyoapps.dssforstudents.logic.AKDSSSolver;
 import com.toyoapps.dssforstudents.models.AKDSSKeyStakeholder;
 import com.toyoapps.dssforstudents.models.AKDSSNeed;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 
 /**
@@ -81,14 +86,56 @@ public class AKDSSNormalizeParametersFragment extends Fragment implements IXmlNe
 
                     needTableRow.addView(new TWEditText(this.getContext()) {{
                         setHint(need.getKeyParameterUnit());
+                        addTextChangedListener(new TextWatcher() {
+                            @Override
+                            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+                            @Override
+                            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+                            @Override
+                            public void afterTextChanged(Editable editable) {
+                                double newValue = doubleFromString(editable.toString());
+                                need.getNormalizeParameters().worstValue = newValue;
+                                setText(String.valueOf(newValue), true);
+                            }
+                        });
                     }});
 
                     needTableRow.addView(new TWEditText(this.getContext()) {{
                         setHint(need.getKeyParameterUnit());
+                        addTextChangedListener(new TextWatcher() {
+                            @Override
+                            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+                            @Override
+                            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+                            @Override
+                            public void afterTextChanged(Editable editable) {
+                                double newValue = doubleFromString(editable.toString());
+                                need.getNormalizeParameters().normalValue = newValue;
+                                setText(String.valueOf(newValue), true);
+                            }
+                        });
                     }});
 
                     needTableRow.addView(new TWEditText(this.getContext()) {{
                         setHint(need.getKeyParameterUnit());
+                        addTextChangedListener(new TextWatcher() {
+                            @Override
+                            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+                            @Override
+                            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+                            @Override
+                            public void afterTextChanged(Editable editable) {
+                                double newValue = doubleFromString(editable.toString());
+                                need.getNormalizeParameters().bestPossibleValue = newValue;
+                                setText(String.valueOf(newValue), true);
+                            }
+                        });
                     }});
 
                     tableLayout.addView(needTableRow);
@@ -102,6 +149,48 @@ public class AKDSSNormalizeParametersFragment extends Fragment implements IXmlNe
 
     @Override
     public boolean nextStepClicked(View view) {
-        return false;
+
+        for (AKDSSKeyStakeholder stakeholder: AKDSSSolver.getInstance().getKeyStakeholders()) {
+
+            for (AKDSSNeed need: stakeholder.getNeeds()) {
+
+                AKDSSNeed.AKDSSNeedNormalizeParameters parameters = need.getNormalizeParameters();
+
+                if (parameters.normalValue <= parameters.worstValue || parameters.bestPossibleValue <= parameters.normalValue) {
+                    Toast.makeText(this.getActivity(), "Ошибка заполнения потребости " + need.getName() + ". Худшее значение должно быть самым маленьким, лучшее - самым большим", Toast.LENGTH_LONG).show();
+                    return false;
+                }
+
+            }
+
+        }
+
+        return true;
     }
+
+
+    // MARK: Helper
+
+    public double doubleFromString(String string) {
+
+        if(string == null || string.isEmpty()) {
+
+            return 0.0;
+
+        } else {
+
+            NumberFormat format = NumberFormat.getInstance(Locale.getDefault());
+            try {
+                Number number = format.parse(string);
+                double value = number.doubleValue();
+                if (value > 999999) value = 999999;
+                if (value < 0) value = 0;
+                return value;
+            }
+            catch (Exception e) {
+                return 0.0;
+            }
+        }
+    }
+
 }

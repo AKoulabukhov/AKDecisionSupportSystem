@@ -12,12 +12,21 @@ public class AKDSSNeed {
     private double importance;
     private double weight;
 
+    private AKDSSNeedNormalizeParameters normalizeParameters;
+
+    public class AKDSSNeedNormalizeParameters {
+        public Double worstValue = 0.0;
+        public Double normalValue = 0.0;
+        public Double bestPossibleValue = 0.0;
+    }
+
     private AKDSSKeyStakeholder stakeholder;
 
     private AKDSSNeed() {}
     public AKDSSNeed(String name, AKDSSKeyStakeholder stakeholder) {
         this.name = name;
         this.stakeholder = stakeholder;
+        this.normalizeParameters = new AKDSSNeedNormalizeParameters();
     }
 
     public void setKeyParameter(String keyParameter) {
@@ -70,6 +79,29 @@ public class AKDSSNeed {
         this.weight = weight;
     }
 
+    public AKDSSNeedNormalizeParameters getNormalizeParameters() {
+        return this.normalizeParameters;
+    }
+
     public AKDSSKeyStakeholder getStakeholder() { return this.stakeholder; }
 
+    public double getNormalizedValueOfValue(double value) {
+        if (value <= normalizeParameters.worstValue) {
+            return 0;
+        }
+
+        if (value > normalizeParameters.worstValue && value <= normalizeParameters.normalValue) {
+            return (value - normalizeParameters.worstValue) / (normalizeParameters.normalValue - normalizeParameters.worstValue);
+        }
+
+        if (value > normalizeParameters.normalValue && value <= normalizeParameters.bestPossibleValue) {
+            return  1 + (value - normalizeParameters.normalValue) / (normalizeParameters.bestPossibleValue - normalizeParameters.normalValue);
+        }
+
+        if (value > normalizeParameters.bestPossibleValue) {
+            return 2;
+        }
+
+        return 0;
+    }
 }

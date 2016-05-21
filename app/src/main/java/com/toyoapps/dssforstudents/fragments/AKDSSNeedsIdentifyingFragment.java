@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.HeaderViewListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -83,4 +84,18 @@ public class AKDSSNeedsIdentifyingFragment extends Fragment implements IXmlNextS
 
         return true;
     }
+
+
+    public void updateList() {
+        final View view = getActivity().findViewById(android.R.id.content);
+        if (view == null) return;
+        view.post(new Runnable() {
+            public void run() {
+                AKDSSKeyStakeholdersNeedsAdapter adapter = (AKDSSKeyStakeholdersNeedsAdapter) ((HeaderViewListAdapter)needsListView.getAdapter()).getWrappedAdapter();
+                adapter.notifyDataSetChanged();
+            }
+        });
+    }
+
+
 }

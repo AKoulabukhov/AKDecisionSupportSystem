@@ -52,7 +52,7 @@ public class TWEditText extends EditText {
     }
 
     public ArrayList<TextWatcher> getTextChangedListeners () {
-        return this.textChangedListeners;
+        return new ArrayList<>(this.textChangedListeners);
     }
 
     public void removeAllTextChangedListeners() {
@@ -60,6 +60,34 @@ public class TWEditText extends EditText {
             super.removeTextChangedListener(textWatcher);
         }
         textChangedListeners.clear();
+    }
+
+    public void setText(String text, boolean bypassTextChangedListeners) {
+
+        if (!bypassTextChangedListeners) {
+            super.setText(text);
+            return;
+        }
+
+        final int previousCursorPosition = getSelectionStart();
+
+        ArrayList<TextWatcher> listeners = getTextChangedListeners();
+        removeAllTextChangedListeners();
+        super.setText(text);
+        setTextChangedListeners(listeners);
+
+        post(new Runnable() {
+            @Override
+            public void run() {
+                if (previousCursorPosition < TWEditText.this.getText().length()) {
+                    setSelection(previousCursorPosition);
+                }
+                else {
+                    setSelection(TWEditText.this.getText().length());
+                }
+            }
+        });
+
     }
 
 }

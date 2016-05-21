@@ -11,6 +11,7 @@ import android.view.View;
 import com.toyoapps.dssforstudents.AHP.AKAHPPairwiseComparison;
 import com.toyoapps.dssforstudents.R;
 import com.toyoapps.dssforstudents.fragments.AKDSSNormalizeParametersFragment;
+import com.toyoapps.dssforstudents.fragments.AKDSSResultsFragment;
 import com.toyoapps.dssforstudents.logic.AKDSSSolver;
 import com.toyoapps.dssforstudents.models.AKDSSKeyStakeholder;
 import com.toyoapps.dssforstudents.models.AKDSSStakeholder;
@@ -37,6 +38,7 @@ public class AKDSSLearningModeActivity extends AppCompatActivity implements AKDS
     private AKDSSKeyStakeholdersFragment keyStakeholdersFragment;
     private AKDSSNeedsIdentifyingFragment needsIdentifyingFragment;
     private AKDSSNormalizeParametersFragment normalizeParametersFragment;
+    private AKDSSResultsFragment resultsFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,6 +130,19 @@ public class AKDSSLearningModeActivity extends AppCompatActivity implements AKDS
 
                 break;
 
+            case R.id.normalizeParametersNextButton:
+
+                if (!normalizeParametersFragment.nextStepClicked(v)) {
+                    return;
+                }
+
+                if (resultsFragment == null) {
+                    resultsFragment = new AKDSSResultsFragment();
+                }
+
+                this.presentFragment(resultsFragment);
+                this.stepsFragment.setSelectedStep(5);
+
             default:
                 break;
         }
@@ -161,6 +176,13 @@ public class AKDSSLearningModeActivity extends AppCompatActivity implements AKDS
         keyStakeholdersFragment.updateList();
     }
 
+    public void updateNeedsList() {
+        if (needsIdentifyingFragment == null) {
+            return;
+        }
+        needsIdentifyingFragment.updateList();
+    }
+
     public void setKeyStakeholdersRangingFinished() {
         if (keyStakeholdersFragment == null) {
             return;
@@ -192,10 +214,9 @@ public class AKDSSLearningModeActivity extends AppCompatActivity implements AKDS
             this.updateStakeholdersList();
         }
         if (dialog.dialogType == AKDSSEditTextDialog.DialogType.DIALOG_TYPE_STAKEHOLDER_NEEDS) {
-
             AKDSSKeyStakeholder stakeholder = (AKDSSKeyStakeholder) dialog.connectedObject;
             stakeholder.addNeed(inputText);
-
+            this.updateNeedsList();
         }
     }
 

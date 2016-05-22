@@ -1,2 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
+
+    <item
+        jar="/Users/toyo/.gradle/caches/modules-2/files-2.1/com.github.PhilJay/MPAndroidChart/v2.2.4/7abd1ecef320da6a7679b137083151401fe8bf43/MPAndroidChart-v2.2.4.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="7abd1ecef320da6a7679b137083151401fe8bf43">
+        <dex dex="/Users/toyo/Desktop/AKDecisionSupportSystem/app/build/intermediates/transforms/dex/debug/folders/1000/10/MPAndroidChart-v2.2.4_af0a03252e2512a14fd8decd8c62118798c61663/classes.dex" />
+    </item>
+    <item
+        jar="/Users/toyo/Desktop/AKDecisionSupportSystem/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.3.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="23be6993826b8fd88bbc8d14928bb3b8960d3d4e">
+        <dex dex="/Users/toyo/Desktop/AKDecisionSupportSystem/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-23.3.0_33c2fd8054034012a94986a8beffafe9bb675935/classes.dex" />
+    </item>
+    <item
+        jar="/Users/toyo/Desktop/AKDecisionSupportSystem/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.3.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="a0b5d60246cd9d4f3f2443611b3b4c25265840b5">
+        <dex dex="/Users/toyo/Desktop/AKDecisionSupportSystem/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-23.3.0_f99c93fc08999340cd48b5b37237c44993f4baa3/classes.dex" />
+    </item>
+    <item
+        jar="/Users/toyo/Desktop/AKDecisionSupportSystem/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="515c705541a49317346f07ccc43290c79428a412">
+        <dex dex="/Users/toyo/Desktop/AKDecisionSupportSystem/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_36f649f0daa685f1938ba87d5f539cec67df305f/classes.dex" />
+    </item>
+    <item
+        jar="/Users/toyo/Desktop/AKDecisionSupportSystem/app/build/intermediates/exploded-aar/com.androidplot/androidplot-core/0.9.8/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="614dc76ebb5d52053e3fc6572721873744524fb7">
+        <dex dex="/Users/toyo/Desktop/AKDecisionSupportSystem/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.androidplot-androidplot-core-0.9.8_f9740055870d2b685dd9e28267b9fc5e00910f0a/classes.dex" />
+    </item>
+    <item
+        jar="/Users/toyo/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.3.0/support-annotations-23.3.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="db7791d75a07fef9844d06236c1c59ba7bf6997c">
+        <dex dex="/Users/toyo/Desktop/AKDecisionSupportSystem/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-23.3.0_4d3b75bb82fdf48e9815b410aac73325b40b1548/classes.dex" />
+    </item>
+    <item
+        jar="/Users/toyo/Desktop/AKDecisionSupportSystem/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.3.0/jars/libs/internal_impl-23.3.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="4da5a4d697d32497c6f85567a5112e62fdfd0676">
+        <dex dex="/Users/toyo/Desktop/AKDecisionSupportSystem/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.3.0_f90730fc4840a9b9ecd03fba6409ea8b0a0f6fed/classes.dex" />
+    </item>
+    <item
+        jar="/Users/toyo/Desktop/AKDecisionSupportSystem/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="1b8e03daaa43fb0a4cd57e378167c2fd70454c1e">
+        <dex dex="/Users/toyo/Desktop/AKDecisionSupportSystem/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-23.3.0_ef5764daa7284bef02abb4aea20f41d28801bd76/classes.dex" />
+    </item>
+    <item
+        jar="/Users/toyo/Desktop/AKDecisionSupportSystem/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.3.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="8a034dd16c0dfd75fe86c52c2cd581592acc684a">
+        <dex dex="/Users/toyo/Desktop/AKDecisionSupportSystem/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-23.3.0_52f74d884ecd5d8809c727ea8c2bc5456956bec4/classes.dex" />
+    </item>
+    <item
+        jar="/Users/toyo/Desktop/AKDecisionSupportSystem/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="718935eddda8ecf7a0c650c366de7bf5f006d7e5">
+        <dex dex="/Users/toyo/Desktop/AKDecisionSupportSystem/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_cb2116cb30b469dcae8e658e960bbe8761c303a5/classes.dex" />
+    </item>
+
+</items>

@@ -28,6 +28,7 @@ import com.toyoapps.dssforstudents.fragments.AKDSSStakeholdersFragment;
 public class AKDSSLearningModeActivity extends AppCompatActivity implements AKDSSEditTextDialog.AKDSSEditTextDialogListener, AKAHPPairwiseComparison.AKAHPPairwiseComparisonDelegate {
 
     public static AKDSSLearningModeActivity lastCreatedActivity;
+    private Fragment currentFragment;
 
     // Steps fragment
     private AKDSSLearningModeStepsFragment stepsFragment;
@@ -63,10 +64,20 @@ public class AKDSSLearningModeActivity extends AppCompatActivity implements AKDS
     // MARK: Navigation actions
 
     public void presentFragment (Fragment fragment) {
+        this.presentFragment(fragment, false);
+    }
+
+    public void presentFragment (Fragment fragment, boolean backward) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
+        if (!backward) {
+            fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
+        }
+        else {
+            fragmentTransaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
+        }
         fragmentTransaction.replace(R.id.fragment_container, fragment);
         fragmentTransaction.commit();
+        currentFragment = fragment;
     }
 
     public void nextStepClicked(View v) {
@@ -148,6 +159,44 @@ public class AKDSSLearningModeActivity extends AppCompatActivity implements AKDS
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        if (currentFragment == overviewFragment) {
+            super.onBackPressed();
+            //moveTaskToBack(true);
+            return;
+        }
+
+        if (currentFragment == stakeholdersFragment) {
+            this.presentFragment(overviewFragment, true);
+            this.stepsFragment.setSelectedStep(0);
+            return;
+        }
+
+        if (currentFragment == keyStakeholdersFragment) {
+            this.presentFragment(stakeholdersFragment, true);
+            this.stepsFragment.setSelectedStep(1);
+            return;
+        }
+
+        if (currentFragment == needsIdentifyingFragment) {
+            this.presentFragment(keyStakeholdersFragment, true);
+            this.stepsFragment.setSelectedStep(2);
+            return;
+        }
+
+        if (currentFragment == normalizeParametersFragment) {
+            this.presentFragment(needsIdentifyingFragment, true);
+            this.stepsFragment.setSelectedStep(3);
+            return;
+        }
+
+        if (currentFragment == resultsFragment) {
+            this.presentFragment(normalizeParametersFragment, true);
+            this.stepsFragment.setSelectedStep(4);
+        }
+    }
+
     public void addStakeholderClicked(View v) {
         FragmentManager fm = getSupportFragmentManager();
         AKDSSEditTextDialog editNameDialog = new AKDSSEditTextDialog();
@@ -161,6 +210,8 @@ public class AKDSSLearningModeActivity extends AppCompatActivity implements AKDS
         Intent launchLearningStartActivityIntent = new Intent(AKDSSLearningModeActivity.this, AKDSSStakeholdersListActivity.class);
         startActivity(launchLearningStartActivityIntent);
     }
+
+    // MARK: Updaters
 
     public void updateStakeholdersList() {
         if (stakeholdersFragment == null) {

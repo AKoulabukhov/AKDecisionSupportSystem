@@ -1,6 +1,7 @@
 package com.toyoapps.dssforstudents.fragments;
 
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -62,6 +63,13 @@ public class AKDSSNormalizeParametersFragment extends Fragment implements IXmlNe
                 tableRow.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
                         TableRow.LayoutParams.WRAP_CONTENT));
 
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    tableRow.setBackgroundColor(getResources().getColor(R.color.off_white, getContext().getTheme()));
+                }
+                else {
+                    tableRow.setBackgroundColor(getResources().getColor(R.color.off_white));
+                }
+
                 tableRow.addView(new TextView(this.getContext()){{
                     setText(stakeholder.getTitle());
                     setTextSize(18);
@@ -86,6 +94,12 @@ public class AKDSSNormalizeParametersFragment extends Fragment implements IXmlNe
 
                     needTableRow.addView(new TWEditText(this.getContext()) {{
                         setHint(need.getKeyParameterUnit());
+
+                        double value = need.getNormalizeParameters().worstValue;
+                        if (value != 0.0) {
+                            setText(String.valueOf(value));
+                        }
+
                         addTextChangedListener(new TextWatcher() {
                             @Override
                             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
@@ -99,11 +113,18 @@ public class AKDSSNormalizeParametersFragment extends Fragment implements IXmlNe
                                 need.getNormalizeParameters().worstValue = newValue;
                                 setText(String.valueOf(newValue), true);
                             }
+
                         });
                     }});
 
                     needTableRow.addView(new TWEditText(this.getContext()) {{
                         setHint(need.getKeyParameterUnit());
+
+                        double value = need.getNormalizeParameters().normalValue;
+                        if (value != 0.0) {
+                            setText(String.valueOf(value));
+                        }
+
                         addTextChangedListener(new TextWatcher() {
                             @Override
                             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
@@ -122,6 +143,12 @@ public class AKDSSNormalizeParametersFragment extends Fragment implements IXmlNe
 
                     needTableRow.addView(new TWEditText(this.getContext()) {{
                         setHint(need.getKeyParameterUnit());
+
+                        double value = need.getNormalizeParameters().bestPossibleValue;
+                        if (value != 0.0) {
+                            setText(String.valueOf(value));
+                        }
+
                         addTextChangedListener(new TextWatcher() {
                             @Override
                             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}

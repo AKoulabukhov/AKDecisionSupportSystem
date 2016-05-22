@@ -148,9 +148,7 @@ public class AKDSSKeyStakeholdersNeedsAdapter extends ArrayAdapter<Object> {
 
             DecimalFormat decimalFormat = new DecimalFormat("#.00");
             TextView weightTextView = (TextView) rowView.findViewById(R.id.needWeightTextView);
-            if (need.getWeight() != 0) {
-                weightTextView.setText(decimalFormat.format(need.getWeight()));
-            }
+            weightTextView.setText(decimalFormat.format(need.getWeight()));
 
             if (this.needs.contains(need)) {
                 int index = this.needs.indexOf(need);
@@ -178,10 +176,6 @@ public class AKDSSKeyStakeholdersNeedsAdapter extends ArrayAdapter<Object> {
                 @Override
                 public void afterTextChanged(Editable editable) {
                     need.setImportance(doubleFromString(editable.toString()));
-//                    ArrayList<TextWatcher> listeners = parameterImporatnceEditText.getTextChangedListeners();
-//                    parameterImporatnceEditText.removeAllTextChangedListeners();
-//                    parameterImporatnceEditText.setText(format.format(need.getImportance()));
-//                    parameterImporatnceEditText.setTextChangedListeners(listeners);
 
                     ((Activity) AKDSSKeyStakeholdersNeedsAdapter.this.context).runOnUiThread(new Runnable() {
                         @Override
@@ -319,7 +313,12 @@ public class AKDSSKeyStakeholdersNeedsAdapter extends ArrayAdapter<Object> {
             AKDSSNeed need = needs.get(i);
             double weight = need.getWeight();
             final String weightString = format.format(weight);
-            textView.setText(weightString);
+            textView.post(new Runnable() {
+                @Override
+                public void run() {
+                    textView.setText(weightString);
+                }
+            });
         }
     }
 

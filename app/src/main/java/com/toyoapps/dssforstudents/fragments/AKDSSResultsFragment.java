@@ -193,8 +193,10 @@ public class AKDSSResultsFragment extends Fragment {
         RadarDataSet realDataSet = new RadarDataSet(realEntries, "Удовлетворенность ЗС");
         realDataSet.setColor(Color.GREEN);
         realDataSet.setDrawFilled(true);
+
         RadarDataSet oneDataSet = new RadarDataSet(oneEntries, "Порог удовлетворенности");
         oneDataSet.setColor(Color.RED);
+        oneDataSet.setValueTextColor(Color.TRANSPARENT);
 
         ArrayList<IRadarDataSet> dataSets = new ArrayList<>();
         dataSets.add(oneDataSet);

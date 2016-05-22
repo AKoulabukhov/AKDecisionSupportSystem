@@ -28,26 +28,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="42ead295-169f-4205-99df-f12ceee3d81c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/toyoapps/dssforstudents/models/AKDSSKeyParameter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/table_row_results_stakeholder.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/outputFileStates.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/outputFileStates.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/taskArtifacts.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toyoapps/dssforstudents/AHP/AKAHPPairwiseComparison.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toyoapps/dssforstudents/AHP/AKAHPPairwiseComparison.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toyoapps/dssforstudents/activities/AKDSSLearningModeActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toyoapps/dssforstudents/activities/AKDSSLearningModeActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toyoapps/dssforstudents/fragments/AKDSSNormalizeParametersFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toyoapps/dssforstudents/fragments/AKDSSNormalizeParametersFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toyoapps/dssforstudents/fragments/AKDSSResultsFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toyoapps/dssforstudents/fragments/AKDSSResultsFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toyoapps/dssforstudents/listadapters/AKDSSKeyStakeholdersNeedsAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toyoapps/dssforstudents/listadapters/AKDSSKeyStakeholdersNeedsAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toyoapps/dssforstudents/logic/AKDSSSolver.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toyoapps/dssforstudents/logic/AKDSSSolver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toyoapps/dssforstudents/models/AKDSSKeyStakeholder.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toyoapps/dssforstudents/models/AKDSSKeyStakeholder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/toyoapps/dssforstudents/models/AKDSSNeed.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/toyoapps/dssforstudents/models/AKDSSNeed.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_akdss_results.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_akdss_results.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
     </list>
     <ignored path="AKDecisionSupportSystem.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -123,12 +110,35 @@
       <file leaf-file-name="AKDSSResultsFragment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/toyoapps/dssforstudents/fragments/AKDSSResultsFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.52873564">
-              <caret line="140" column="31" selection-start-line="140" selection-start-column="31" selection-end-line="140" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.27586207">
+              <caret line="198" column="56" selection-start-line="198" selection-start-column="56" selection-end-line="198" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#7788#7812#0" expanded="true" />
                 <element signature="e#7815#7838#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AKDSSNeedsIdentifyingFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/toyoapps/dssforstudents/fragments/AKDSSNeedsIdentifyingFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AKDSSKeyStakeholdersNeedsAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/toyoapps/dssforstudents/listadapters/AKDSSKeyStakeholdersNeedsAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="178" column="0" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
+              <folding>
+                <element signature="e#10602#10764#0" expanded="true" />
+                <element signature="e#10763#10764#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1760,8 +1770,8 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/toyoapps/dssforstudents/fragments/AKDSSNormalizeParametersFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/toyoapps/dssforstudents/AHP/AKAHPPairwiseComparison.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/toyoapps/dssforstudents/listadapters/AKDSSKeyStakeholdersNeedsAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_akdss_results.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/toyoapps/dssforstudents/listadapters/AKDSSKeyStakeholdersNeedsAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/toyoapps/dssforstudents/fragments/AKDSSResultsFragment.java" />
       </list>
     </option>
@@ -2316,7 +2326,13 @@
       <option name="project" value="LOCAL" />
       <updated>1463926911606</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="v0.1">
+      <created>1463943416269</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1463943416269</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TodoView">
@@ -2353,7 +2369,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30888575" sideWeight="0.42836675" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30888575" sideWeight="0.42836675" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -2374,7 +2390,8 @@
     <MESSAGE value="need list completed5" />
     <MESSAGE value="started work on last steps" />
     <MESSAGE value="last step layout" />
-    <option name="LAST_COMMIT_MESSAGE" value="last step layout" />
+    <MESSAGE value="v0.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="v0.1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2433,14 +2450,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22670025">
           <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/toyoapps/dssforstudents/fragments/AKDSSNeedsIdentifyingFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2806,14 +2815,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/toyoapps/dssforstudents/listadapters/AKDSSKeyStakeholdersNeedsAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39732143">
-          <caret line="152" column="13" selection-start-line="152" selection-start-column="13" selection-end-line="152" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/toyoapps/dssforstudents/listadapters/AKDSSStakeholderListViewAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.3125">
@@ -2830,10 +2831,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/toyoapps/dssforstudents/fragments/AKDSSNeedsIdentifyingFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/toyoapps/dssforstudents/listadapters/AKDSSKeyStakeholdersNeedsAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="178" column="0" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
+          <folding>
+            <element signature="e#10602#10764#0" expanded="true" />
+            <element signature="e#10763#10764#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/toyoapps/dssforstudents/fragments/AKDSSResultsFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.52873564">
-          <caret line="140" column="31" selection-start-line="140" selection-start-column="31" selection-end-line="140" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.27586207">
+          <caret line="198" column="56" selection-start-line="198" selection-start-column="56" selection-end-line="198" selection-end-column="56" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#7788#7812#0" expanded="true" />

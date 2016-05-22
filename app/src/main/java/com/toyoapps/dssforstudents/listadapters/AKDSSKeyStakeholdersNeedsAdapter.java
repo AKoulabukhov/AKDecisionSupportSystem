@@ -148,7 +148,9 @@ public class AKDSSKeyStakeholdersNeedsAdapter extends ArrayAdapter<Object> {
 
             DecimalFormat decimalFormat = new DecimalFormat("#.00");
             TextView weightTextView = (TextView) rowView.findViewById(R.id.needWeightTextView);
-            weightTextView.setText(decimalFormat.format(need.getWeight()));
+            if (need.getWeight() != 0) {
+                weightTextView.setText(decimalFormat.format(need.getWeight()));
+            }
 
             if (this.needs.contains(need)) {
                 int index = this.needs.indexOf(need);

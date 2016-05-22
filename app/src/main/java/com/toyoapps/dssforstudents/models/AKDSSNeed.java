@@ -11,6 +11,7 @@ public class AKDSSNeed {
 
     private double importance;
     private double weight;
+    private double keyParameterValue = 0.0;
 
     private AKDSSNeedNormalizeParameters normalizeParameters;
 
@@ -85,20 +86,28 @@ public class AKDSSNeed {
 
     public AKDSSKeyStakeholder getStakeholder() { return this.stakeholder; }
 
-    public double getNormalizedValueOfValue(double value) {
-        if (value <= normalizeParameters.worstValue) {
+    public double getKeyParameterValue() {
+        return keyParameterValue;
+    }
+
+    public void setKeyParameterValue(double value) {
+        keyParameterValue = value;
+    }
+
+    public double getNormalizedKeyParameterValue() {
+        if (keyParameterValue <= normalizeParameters.worstValue) {
             return 0;
         }
 
-        if (value > normalizeParameters.worstValue && value <= normalizeParameters.normalValue) {
-            return (value - normalizeParameters.worstValue) / (normalizeParameters.normalValue - normalizeParameters.worstValue);
+        if (keyParameterValue > normalizeParameters.worstValue && keyParameterValue <= normalizeParameters.normalValue) {
+            return (keyParameterValue - normalizeParameters.worstValue) / (normalizeParameters.normalValue - normalizeParameters.worstValue);
         }
 
-        if (value > normalizeParameters.normalValue && value <= normalizeParameters.bestPossibleValue) {
-            return  1 + (value - normalizeParameters.normalValue) / (normalizeParameters.bestPossibleValue - normalizeParameters.normalValue);
+        if (keyParameterValue > normalizeParameters.normalValue && keyParameterValue <= normalizeParameters.bestPossibleValue) {
+            return 1 + (keyParameterValue - normalizeParameters.normalValue) / (normalizeParameters.bestPossibleValue - normalizeParameters.normalValue);
         }
 
-        if (value > normalizeParameters.bestPossibleValue) {
+        if (keyParameterValue > normalizeParameters.bestPossibleValue) {
             return 2;
         }
 

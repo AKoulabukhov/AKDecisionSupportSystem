@@ -316,17 +316,12 @@ public class AKAHPPairwiseComparison extends AppCompatActivity {
 
             for (ArrayList<TWEditText> list: editTexts) {
                 for (TWEditText editText: list) {
-                    ArrayList<TextWatcher> watchers = editText.getTextChangedListeners();
-                    editText.removeAllTextChangedListeners();
-
                     if (editTexts.indexOf(list) == list.indexOf(editText)) {
-                        editText.setText("1");
+                        editText.setText("1", true);
                     }
                     else {
-                        editText.setText("");
+                        editText.setText("", true);
                     }
-
-                    editText.setTextChangedListeners(watchers);
                 }
             }
 

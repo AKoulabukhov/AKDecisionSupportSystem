@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -88,7 +89,7 @@ public class AKDSSNormalizeParametersFragment extends Fragment implements IXmlNe
                             TableRow.LayoutParams.WRAP_CONTENT));
 
                     needTableRow.addView(new TextView(this.getContext()) {{
-                        setText(need.getName());
+                        setText(need.getKeyParameter());
                         setTextSize(16);
                     }});
 
@@ -99,6 +100,8 @@ public class AKDSSNormalizeParametersFragment extends Fragment implements IXmlNe
                         if (value != 0.0) {
                             setText(String.valueOf(value));
                         }
+
+                        setRawInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
 
                         addTextChangedListener(new TextWatcher() {
                             @Override
@@ -125,6 +128,8 @@ public class AKDSSNormalizeParametersFragment extends Fragment implements IXmlNe
                             setText(String.valueOf(value));
                         }
 
+                        setRawInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+
                         addTextChangedListener(new TextWatcher() {
                             @Override
                             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
@@ -148,6 +153,8 @@ public class AKDSSNormalizeParametersFragment extends Fragment implements IXmlNe
                         if (value != 0.0) {
                             setText(String.valueOf(value));
                         }
+
+                        setRawInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
 
                         addTextChangedListener(new TextWatcher() {
                             @Override
@@ -184,7 +191,7 @@ public class AKDSSNormalizeParametersFragment extends Fragment implements IXmlNe
                 AKDSSNeed.AKDSSNeedNormalizeParameters parameters = need.getNormalizeParameters();
 
                 if (parameters.normalValue <= parameters.worstValue || parameters.bestPossibleValue <= parameters.normalValue) {
-                    Toast.makeText(this.getActivity(), "Ошибка заполнения потребости " + need.getName() + ". Худшее значение должно быть самым маленьким, лучшее - самым большим", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this.getActivity(), "Ошибка заполнения параметра " + need.getKeyParameter() + ". Худшее значение должно быть самым маленьким, лучшее - самым большим", Toast.LENGTH_LONG).show();
                     return false;
                 }
 

@@ -3,6 +3,9 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <dimen name="activity_horizontal_small_margin">10dp</dimen>
+    <dimen name="activity_vertical_small_margin">10dp</dimen>
+
     <!--  -->
     <dimen name="activity_akdssoverview_top_blocks_width">200dp</dimen>
     <dimen name="activity_akdssoverview_top_blocks_height">80dp</dimen>

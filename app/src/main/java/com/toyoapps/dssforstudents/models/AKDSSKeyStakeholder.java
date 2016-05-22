@@ -2,6 +2,8 @@ package com.toyoapps.dssforstudents.models;
 
 import android.support.annotation.NonNull;
 
+import com.toyoapps.dssforstudents.logic.AKDSSSolver;
+
 import java.util.ArrayList;
 
 /**
@@ -46,10 +48,12 @@ public class AKDSSKeyStakeholder {
     public AKDSSNeed addNeed(String name) {
         AKDSSNeed need = new AKDSSNeed(name, this);
         this.needs.add(need);
+        AKDSSSolver.getInstance().needKeyParametersUpdate = true;
         return need;
     }
 
     public void removeNeed(AKDSSNeed need) {
+        AKDSSSolver.getInstance().needKeyParametersUpdate = true;
         this.needs.remove(need);
     }
 

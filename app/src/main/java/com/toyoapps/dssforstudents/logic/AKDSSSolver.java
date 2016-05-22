@@ -4,7 +4,9 @@ import android.graphics.Color;
 
 import com.androidplot.xy.LineAndPointFormatter;
 import com.androidplot.xy.SimpleXYSeries;
+import com.toyoapps.dssforstudents.models.AKDSSKeyParameter;
 import com.toyoapps.dssforstudents.models.AKDSSKeyStakeholder;
+import com.toyoapps.dssforstudents.models.AKDSSNeed;
 import com.toyoapps.dssforstudents.models.AKDSSStakeholder;
 
 import java.util.ArrayList;
@@ -17,11 +19,12 @@ import java.util.Random;
 public class AKDSSSolver {
 
     private boolean learningMode = false;
+    public boolean needKeyParametersUpdate = true;
 
     public void setLearningMode(boolean learningMode) {
         this.learningMode = learningMode;
 
-        if (stakeholders.size() == 0) {
+        if (stakeholders.size() == 0 && learningMode) {
             AKDSSStakeholder stakeholder = new AKDSSStakeholder("Абоненты");
             this.addStakeholder(stakeholder);
             stakeholder.setInfluence(0.5);
@@ -138,6 +141,50 @@ public class AKDSSSolver {
         }
 
         return keyStakeholdersList;
+    }
+
+    // MARK: Parameters & needs
+
+    private ArrayList<AKDSSKeyParameter> keyParameters;
+
+    public ArrayList<AKDSSKeyParameter> getKeyParameters() {
+        if (keyParameters == null) {
+            keyParameters = new ArrayList<>();
+        }
+
+        if (needKeyParametersUpdate) {
+
+            keyParameters.clear();
+
+            for (AKDSSKeyStakeholder stakeholder: keyStakeholders) {
+                for (AKDSSNeed need: stakeholder.getNeeds()) {
+
+                    boolean needParameterAlreadyExist = false;
+
+                    for (AKDSSKeyParameter parameter: keyParameters) {
+
+                        if (parameter.getName().equalsIgnoreCase(need.getKeyParameter()) &&
+                                parameter.getUnit().equalsIgnoreCase(need.getKeyParameterUnit())) {
+
+                            parameter.addAssociatedNeed(need);
+                            needParameterAlreadyExist = true;
+                            break;
+                        }
+                    }
+
+                    if (!needParameterAlreadyExist) {
+                        AKDSSKeyParameter parameter = new AKDSSKeyParameter(need.getKeyParameter(), need.getKeyParameterUnit());
+                        parameter.addAssociatedNeed(need);
+                        keyParameters.add(parameter);
+                    }
+
+                }
+            }
+
+            needKeyParametersUpdate = false;
+        }
+
+        return keyParameters;
     }
 
     // MARK: Singleton

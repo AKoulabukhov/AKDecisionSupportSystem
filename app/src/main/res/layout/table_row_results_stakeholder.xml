@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/activity_vertical_small_margin"
+    android:paddingBottom="@dimen/activity_vertical_small_margin">
+
+    <TextView
+        android:id="@+id/stakeholderTitleTextView"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/sampleText"/>
+
+    <TextView
+        android:id="@+id/localValueTextView"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:gravity="end"
+        android:text="@string/decimalTextPlaceholder"/>
+
+    <TextView
+        android:id="@+id/stakeholderWeightTextView"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:gravity="end"
+        android:text="@string/decimalTextPlaceholder"/>
+
+    <TextView
+        android:id="@+id/globalValueTextView"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:gravity="end"
+        android:text="@string/decimalTextPlaceholder"/>
+
+</TableRow>

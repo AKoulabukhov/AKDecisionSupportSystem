@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.toyoapps.dssforstudents.AHP.AKAHPPairwiseComparison;
 import com.toyoapps.dssforstudents.R;
@@ -288,6 +289,12 @@ public class AKDSSLearningModeActivity extends AppCompatActivity implements AKDS
         editNameDialog.dialogType = AKDSSEditTextDialog.DialogType.DIALOG_TYPE_STAKEHOLDER_NEEDS;
         editNameDialog.connectedObject = stakeholder;
         editNameDialog.show(fm, "fragment_akdssedit_text_dialog");
+    }
+
+    // MARK: Results
+
+    public void showCalculationDetails(View v) {
+        Toast.makeText(AKDSSLearningModeActivity.this, "В разработке", Toast.LENGTH_SHORT).show();
     }
 
 }

@@ -51,8 +51,8 @@ public class AKDSSNeedsIdentifyingFragment extends Fragment implements IXmlNextS
 
         for (AKDSSKeyStakeholder stakeholder: AKDSSSolver.getInstance().getKeyStakeholders()) {
 
-            if (stakeholder.getNeeds().size() < 2) {
-                Toast.makeText(this.getContext(), "Добавьте хотя бы по 2 потребности для каждой ключевой заинтересованной стороны", Toast.LENGTH_SHORT).show();
+            if (stakeholder.getNeeds().size() < 1) {
+                Toast.makeText(this.getContext(), "Добавьте хотя бы по 1 потребности для каждой ключевой заинтересованной стороны", Toast.LENGTH_SHORT).show();
                 return false;
             }
 

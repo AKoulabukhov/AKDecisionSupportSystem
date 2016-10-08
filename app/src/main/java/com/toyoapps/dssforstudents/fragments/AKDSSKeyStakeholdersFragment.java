@@ -19,6 +19,7 @@ import com.toyoapps.dssforstudents.R;
 import com.toyoapps.dssforstudents.helpers.IXmlNextStepClickable;
 import com.toyoapps.dssforstudents.listadapters.AKDSSKeyStakeholdersAdapter;
 import com.toyoapps.dssforstudents.logic.AKDSSSolver;
+import com.toyoapps.dssforstudents.models.AKDSSKeyStakeholder;
 
 import java.util.ArrayList;
 
@@ -62,6 +63,14 @@ public class AKDSSKeyStakeholdersFragment extends Fragment implements IXmlNextSt
             stakeholdersMap.setRangeBoundaries(0, 1, BoundaryMode.FIXED);
 
             this.setupStakeholdersMap();
+
+            for(AKDSSKeyStakeholder stakeholder: AKDSSSolver.getInstance().getKeyStakeholders()) {
+                if (stakeholder.getWeight() == 0.0) {
+                    return;
+                }
+            }
+
+            this.setRangingFinished(true);
         }
     }
 

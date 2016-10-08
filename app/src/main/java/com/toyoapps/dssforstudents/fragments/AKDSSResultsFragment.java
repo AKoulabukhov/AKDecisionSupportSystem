@@ -101,6 +101,10 @@ public class AKDSSResultsFragment extends Fragment {
             slidersTableLayout.addView(tableRow);
         }
 
+        localValueTextViews.clear();
+        stakeholderWeightTextViews.clear();
+        globalValueTextViews.clear();
+
         for (AKDSSKeyStakeholder stakeholder: AKDSSSolver.getInstance().getKeyStakeholders()) {
 
             TableRow tableRow = (TableRow) inflater.inflate(R.layout.table_row_results_stakeholder, null);

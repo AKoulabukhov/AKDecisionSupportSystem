@@ -12,6 +12,15 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Демо-режим"
+        android:id="@+id/demoModeButton"
+        android:layout_above="@+id/learningModeButton"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Режим обучения"
         android:id="@+id/learningModeButton"
         android:layout_centerVertical="true"
@@ -23,7 +32,8 @@
         android:text="Основной режим"
         android:id="@+id/baseModeButton"
         android:layout_below="@+id/learningModeButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -42,7 +52,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Выберите режим:"
         android:id="@+id/textView2"
-        android:layout_above="@+id/learningModeButton"
+        android:layout_above="@+id/demoModeButton"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp" />
 </RelativeLayout>

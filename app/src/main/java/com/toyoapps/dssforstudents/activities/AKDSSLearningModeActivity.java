@@ -13,6 +13,7 @@ import com.toyoapps.dssforstudents.AHP.AKAHPPairwiseComparison;
 import com.toyoapps.dssforstudents.R;
 import com.toyoapps.dssforstudents.fragments.AKDSSNormalizeParametersFragment;
 import com.toyoapps.dssforstudents.fragments.AKDSSResultsFragment;
+import com.toyoapps.dssforstudents.helpers.IXmlNextStepClickable;
 import com.toyoapps.dssforstudents.logic.AKDSSSolver;
 import com.toyoapps.dssforstudents.models.AKDSSKeyStakeholder;
 import com.toyoapps.dssforstudents.models.AKDSSStakeholder;
@@ -29,7 +30,8 @@ import com.toyoapps.dssforstudents.fragments.AKDSSStakeholdersFragment;
 public class AKDSSLearningModeActivity extends AppCompatActivity implements AKDSSEditTextDialog.AKDSSEditTextDialogListener, AKAHPPairwiseComparison.AKAHPPairwiseComparisonDelegate {
 
     public static AKDSSLearningModeActivity lastCreatedActivity;
-    private Fragment currentFragment;
+    private static int lastSelectedStep = 0;
+    private IXmlNextStepClickable currentFragment;
 
     // Steps fragment
     private AKDSSLearningModeStepsFragment stepsFragment;
@@ -46,9 +48,6 @@ public class AKDSSLearningModeActivity extends AppCompatActivity implements AKDS
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_akdsslearningmode);
-
-        // Intansiate solver with learning mode
-        AKDSSSolver.getInstance().setLearningMode(true);
 
         this.stepsFragment = (AKDSSLearningModeStepsFragment) this.getSupportFragmentManager().findFragmentById(R.id.stepsFragment);
 
@@ -78,124 +77,147 @@ public class AKDSSLearningModeActivity extends AppCompatActivity implements AKDS
         }
         fragmentTransaction.replace(R.id.fragment_container, fragment);
         fragmentTransaction.commit();
-        currentFragment = fragment;
+
+        if (fragment instanceof  IXmlNextStepClickable) {
+            currentFragment = (IXmlNextStepClickable)fragment;
+        }
     }
 
-    public void nextStepClicked(View v) {
-        switch (v.getId()) {
-            case R.id.overviewNextButton:
+    public void showStepAtIndex(int index) {
 
-                if (!overviewFragment.nextStepClicked(v)) {
-                    return;
+        if (index == lastSelectedStep) {
+            return;
+        }
+
+        boolean backward = index < lastSelectedStep;
+
+        Fragment fragmentToPresent = null;
+
+        switch (index) {
+
+            case 0:
+            {
+                if (overviewFragment == null) {
+                    overviewFragment = new AKDSSOverviewFragment();
                 }
 
-                if (this.stakeholdersFragment == null) {
-                    this.stakeholdersFragment = new AKDSSStakeholdersFragment();
-                }
-
-                this.presentFragment(this.stakeholdersFragment);
-                this.stepsFragment.setSelectedStep(1);
+                fragmentToPresent = overviewFragment;
                 break;
-
-            case R.id.stakeholdersNextButton:
-
-                if (!stakeholdersFragment.nextStepClicked(v)) {
-                    return;
+            }
+            case 1:
+            {
+                if (stakeholdersFragment == null) {
+                    stakeholdersFragment = new AKDSSStakeholdersFragment();
                 }
 
-                if (this.keyStakeholdersFragment == null) {
-                    this.keyStakeholdersFragment = new AKDSSKeyStakeholdersFragment();
-                }
-
-                this.presentFragment(this.keyStakeholdersFragment);
-                this.stepsFragment.setSelectedStep(2);
-
+                fragmentToPresent = stakeholdersFragment;
                 break;
-
-            case R.id.keyStakeholdersNextButton:
-
-                if (!stakeholdersFragment.nextStepClicked(v)) {
-                    return;
+            }
+            case 2:
+            {
+                if (keyStakeholdersFragment == null) {
+                    keyStakeholdersFragment = new AKDSSKeyStakeholdersFragment();
                 }
 
-                if (this.needsIdentifyingFragment == null) {
-                    this.needsIdentifyingFragment = new AKDSSNeedsIdentifyingFragment();
-                }
-
-                this.presentFragment(this.needsIdentifyingFragment);
-                this.stepsFragment.setSelectedStep(3);
-
+                fragmentToPresent = keyStakeholdersFragment;
                 break;
-
-            case R.id.needsIdentifyingNextButton:
-
-                if (!needsIdentifyingFragment.nextStepClicked(v)) {
-                    return;
+            }
+            case 3:
+            {
+                if (needsIdentifyingFragment == null) {
+                    needsIdentifyingFragment = new AKDSSNeedsIdentifyingFragment();
                 }
 
-                if (this.normalizeParametersFragment == null) {
-                    this.normalizeParametersFragment = new AKDSSNormalizeParametersFragment();
-                }
-
-                this.presentFragment(this.normalizeParametersFragment);
-                this.stepsFragment.setSelectedStep(4);
-
+                fragmentToPresent = needsIdentifyingFragment;
                 break;
-
-            case R.id.normalizeParametersNextButton:
-
-                if (!normalizeParametersFragment.nextStepClicked(v)) {
-                    return;
+            }
+            case 4:
+            {
+                if (normalizeParametersFragment == null) {
+                    normalizeParametersFragment = new AKDSSNormalizeParametersFragment();
                 }
 
+                fragmentToPresent = normalizeParametersFragment;
+                break;
+            }
+            case 5:
+            {
                 if (resultsFragment == null) {
                     resultsFragment = new AKDSSResultsFragment();
                 }
 
-                this.presentFragment(resultsFragment);
-                this.stepsFragment.setSelectedStep(5);
+                fragmentToPresent = resultsFragment;
+                break;
+            }
 
             default:
                 break;
         }
+
+        if (!backward && !currentFragment.nextStepClicked(new View(this))) {
+            return;
+        }
+
+        if (fragmentToPresent != null) {
+            lastSelectedStep = index;
+            this.stepsFragment.setSelectedStep(index);
+            presentFragment(fragmentToPresent, backward);
+            if (fragmentToPresent instanceof IXmlNextStepClickable) {
+                currentFragment = (IXmlNextStepClickable) fragmentToPresent;
+            }
+        }
+
+    }
+
+    public void nextStepClicked(View v) {
+        showStepAtIndex(lastSelectedStep + 1);
     }
 
     @Override
     public void onBackPressed() {
         if (currentFragment == overviewFragment) {
+            lastSelectedStep = 0;
             super.onBackPressed();
-            //moveTaskToBack(true);
             return;
         }
 
+        showStepAtIndex(lastSelectedStep - 1);
+
+        /*
         if (currentFragment == stakeholdersFragment) {
             this.presentFragment(overviewFragment, true);
+            lastSelectedStep = 0;
             this.stepsFragment.setSelectedStep(0);
             return;
         }
 
         if (currentFragment == keyStakeholdersFragment) {
             this.presentFragment(stakeholdersFragment, true);
+            lastSelectedStep = 1;
             this.stepsFragment.setSelectedStep(1);
             return;
         }
 
         if (currentFragment == needsIdentifyingFragment) {
             this.presentFragment(keyStakeholdersFragment, true);
+            lastSelectedStep = 2;
             this.stepsFragment.setSelectedStep(2);
             return;
         }
 
         if (currentFragment == normalizeParametersFragment) {
             this.presentFragment(needsIdentifyingFragment, true);
+            lastSelectedStep = 3;
             this.stepsFragment.setSelectedStep(3);
             return;
         }
 
         if (currentFragment == resultsFragment) {
             this.presentFragment(normalizeParametersFragment, true);
+            lastSelectedStep = 4;
             this.stepsFragment.setSelectedStep(4);
         }
+        */
     }
 
     public void addStakeholderClicked(View v) {

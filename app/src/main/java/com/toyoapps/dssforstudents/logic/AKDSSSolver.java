@@ -19,7 +19,104 @@ import java.util.Random;
 public class AKDSSSolver {
 
     private boolean learningMode = false;
+    private boolean demoMode = false;
     public boolean needKeyParametersUpdate = true;
+
+    public void setDemoMode(boolean demoMode) {
+        this.demoMode = demoMode;
+
+        if (stakeholders.size() == 0 && demoMode) {
+            AKDSSStakeholder stakeholder = new AKDSSStakeholder("Абоненты");
+            this.addStakeholder(stakeholder);
+            stakeholder.setInfluence(0.98);
+            stakeholder.setDependence(0.98);
+
+            stakeholder = new AKDSSStakeholder("Акционеры");
+            this.addStakeholder(stakeholder);
+            stakeholder.setInfluence(0.5);
+            stakeholder.setDependence(0.56);
+
+            stakeholder = new AKDSSStakeholder("Собственники");
+            this.addStakeholder(stakeholder);
+            stakeholder.setInfluence(0.06);
+            stakeholder.setDependence(0.04);
+
+            stakeholder = new AKDSSStakeholder("Корп. служащие");
+            this.addStakeholder(stakeholder);
+            stakeholder.setInfluence(0.12);
+            stakeholder.setDependence(0.14);
+
+            stakeholder = new AKDSSStakeholder("Получ. франшизы");
+            this.addStakeholder(stakeholder);
+            stakeholder.setInfluence(0.14);
+            stakeholder.setDependence(0.12);
+
+            stakeholder = new AKDSSStakeholder("Конкуренты");
+            this.addStakeholder(stakeholder);
+            stakeholder.setInfluence(0.01);
+            stakeholder.setDependence(0.12);
+        }
+
+        if (keyStakeholders.size() == 0 && demoMode) {
+
+            AKDSSKeyStakeholder stakeholder = new AKDSSKeyStakeholder("Акционеры");
+            this.addKeyStakeholder(stakeholder);
+            stakeholder.setWeight(0.2);
+
+            AKDSSNeed need = stakeholder.addNeed("Быстрый возврат инвестиций");
+            need.setKeyParameter("Доходность");
+            need.setKeyParameterUnit("%");
+            need.setImportance(9.8);
+            need.getNormalizeParameters().worstValue = 10.0;
+            need.getNormalizeParameters().normalValue = 15.0;
+            need.getNormalizeParameters().bestPossibleValue = 25.0;
+
+            stakeholder = new AKDSSKeyStakeholder("Абоненты");
+            this.addKeyStakeholder(stakeholder);
+            stakeholder.setWeight(0.4);
+
+            need = stakeholder.addNeed("Широкое покрытие");
+            need.setKeyParameter("Покрытие");
+            need.setKeyParameterUnit("%");
+            need.setImportance(9.8);
+            need.getNormalizeParameters().worstValue = 30.0;
+            need.getNormalizeParameters().normalValue = 40.0;
+            need.getNormalizeParameters().bestPossibleValue = 70.0;
+
+
+            need = stakeholder.addNeed("Гибкость тарифов");
+            need.setKeyParameter("Число тарифов и опций");
+            need.setKeyParameterUnit("шт");
+            need.setImportance(6.9);
+            need.getNormalizeParameters().worstValue = 15.0;
+            need.getNormalizeParameters().normalValue = 35.0;
+            need.getNormalizeParameters().bestPossibleValue = 150.0;
+
+
+            stakeholder = new AKDSSKeyStakeholder("Получатели франшизы");
+            this.addKeyStakeholder(stakeholder);
+            stakeholder.setWeight(0.1);
+
+            need = stakeholder.addNeed("Большая доля рынка");
+            need.setKeyParameter("Доля рынка");
+            need.setKeyParameterUnit("%");
+            need.setImportance(6.5);
+            need.getNormalizeParameters().worstValue = 5.0;
+            need.getNormalizeParameters().normalValue = 20.0;
+            need.getNormalizeParameters().bestPossibleValue = 75.0;
+
+
+            need = stakeholder.addNeed("Высокая прибыль");
+            need.setKeyParameter("Прибыльность");
+            need.setKeyParameterUnit("шт");
+            need.setImportance(9.8);
+            need.getNormalizeParameters().worstValue = 5.0;
+            need.getNormalizeParameters().normalValue = 10.0;
+            need.getNormalizeParameters().bestPossibleValue = 20.0;
+
+        }
+
+    }
 
     public void setLearningMode(boolean learningMode) {
         this.learningMode = learningMode;
